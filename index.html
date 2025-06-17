@@ -2,17 +2,517 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <style>
-      @import "./src/style.css";
-    </style>
-    <title>JSDev</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Drug Test Order</title>
   </head>
-  <body>
-    <h1>Alright. You're set.</h1>
-      <h2 class="tintedBlackLeft">Now build something amazing!</h2>
-      <p>JS in FM is amazing</p>
-    <button type="button">Click Me!</button>
+  <body class="bg-gray-50 min-h-screen">
+    <div class="max-w-3xl mx-auto p-6">
+      <h1 class="text-3xl font-bold mb-6 text-center">Aegis Drug Test Order</h1>
+      <form id="orderForm" class="space-y-4">
+        <div id="aegisLabSection" class="bg-white rounded shadow p-4 grid grid-cols-1 md:grid-cols-2 gap-4 relative">
+          <h2 class="text-xl font-semibold mb-2 col-span-full">Aegis Lab Information</h2>
+          <button type="button" class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs" onclick="window.toggleSectionEdit('aegisLabSection')">Edit</button>
+          <div class="section-display">
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Client ID:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-MSH4"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Date and Time:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-MSH7"></span></div>
+          </div>
+        </div>
+        <div id="patientSection" class="bg-white rounded shadow p-4 grid grid-cols-1 md:grid-cols-2 gap-4 relative">
+          <h2 class="text-xl font-semibold mb-2 col-span-full">Patient Information</h2>
+          <button type="button" class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs" onclick="window.toggleSectionEdit('patientSection')">Edit</button>
+          <div class="section-display">
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Patient ID:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID2"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Patient Name:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID5"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Address:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID11address"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Address 2:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID11address2"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">City:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID11city"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">State:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID11state"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Zip Code:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID11zip"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Phone Number:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID13"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">DOB:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID7"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Sex:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID8"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Race:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID10"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">SSN:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID19"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Ethnic Group:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID22"></span></div>
+          </div>
+        </div>
+        <div id="providerSection" class="bg-white rounded shadow p-4 grid grid-cols-1 md:grid-cols-2 gap-4 relative">
+          <h2 class="text-xl font-semibold mb-2 col-span-full">Provider & Billing</h2>
+          <button type="button" class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs" onclick="window.toggleSectionEdit('providerSection')">Edit</button>
+          <div class="section-display">
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Referring Doctor:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PV18"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Ordering Provider:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-OBR16"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Bill/Diagnosis Code:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-DG13"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Bill Type:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN147"></span></div>
+          </div>
+        </div>
+        <div id="insuranceSection" class="bg-white rounded shadow p-4 grid grid-cols-1 md:grid-cols-2 gap-4 relative">
+          <h2 class="text-xl font-semibold mb-2 col-span-full">Insurance</h2>
+          <button type="button" class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs" onclick="window.toggleSectionEdit('insuranceSection')">Edit</button>
+          <div class="section-display">
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Company ID:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN13"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Company Name:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN14"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Company Address:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN15address"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Address 2:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN15address2"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">City:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN15city"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">State:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN15state"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Zip Code:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN15zip"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Insured Name:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN116"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Relationship to Patient:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN117"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Insured's DOB:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN118"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Insured's Address:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN119address"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Address 2:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN119address2"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">City:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN119city"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">State:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN119state"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Zip Code:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN119zip"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Policy Number:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN136"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Insured's Sex:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN143"></span></div>
+          </div>
+        </div>
+        <div id="guarantorSection" class="bg-white rounded shadow p-4 grid grid-cols-1 md:grid-cols-2 gap-4 relative">
+          <h2 class="text-xl font-semibold mb-2 col-span-full">Guarantor</h2>
+          <button type="button" class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs" onclick="toggleSectionEdit('guarantorSection')">Edit</button>
+          <div class="section-display">
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Name:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-GT13"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Address:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-GT15address"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Address 2:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-GT15address2"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">City:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-GT15city"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">State:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-GT15state"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Zip Code:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-GT15zip"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Phone Number:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-GT16"></span></div>
+          </div>
+        </div>
+        <div id="obrContainer"></div>
+        <button type="button" onclick="addOBR()" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Add Order Request</button>
+        <!-- OBR/OBX dynamic sections -->
+        <template id="obrTemplate">
+          <div class="bg-white rounded shadow p-6 mt-6 obr-section">
+            <h2 class="text-lg font-semibold mb-4">Order Request
+              <span class="text-red-500 ml-2 cursor-pointer font-normal text-sm" onclick="this.closest('.obr-section').remove()">Remove</span>
+            </h2>
+            <label class="block mb-2">Order Code
+              <input name="OrderCode" class="order-code-input mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Type to search..." autocomplete="off" />
+              <div class="order-code-dropdown hidden absolute z-50 bg-white border border-gray-300 rounded shadow max-h-60 overflow-y-auto w-full"></div>
+            </label>
+            <label class="block mb-2">Order Description
+              <input name="OrderDescription" class="order-desc-input mt-1 block w-full border border-gray-300 rounded px-3 py-2 bg-gray-100" readonly />
+            </label>
+            <div class="obxContainer"></div>
+            <button type="button" onclick="addOBX(this)" class="bg-indigo-600 text-white px-3 py-1 rounded hover:bg-indigo-700 mt-2">Add Observation</button>
+          </div>
+        </template>
+        <template id="obxTemplate">
+          <div class="bg-gray-100 rounded p-4 mt-4 obx-section">
+            <h3 class="text-md font-semibold mb-2">Observation
+              <span class="text-red-500 ml-2 cursor-pointer font-normal text-sm" onclick="this.closest('.obx-section').remove()">Remove</span>
+            </h3>
+            <label class="block mb-2">Observation Question
+              <input name="Question" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+            </label>
+            <label class="block mb-2">Observation Answer
+              <input name="Answer" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+            </label>
+          </div>
+        </template>
+        <button type="submit" class="w-full bg-green-600 text-white px-3 py-2 rounded hover:bg-green-700 mt-2">Submit Order</button>
+      </form>
+    </div>
+    <!-- Modal for editing sections -->
+    <div id="editModal" class="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-40 hidden">
+      <div class="bg-white rounded shadow-lg p-6 w-full max-w-lg relative max-h-[90vh] overflow-y-auto">
+        <button id="closeModalBtn" class="absolute top-2 right-2 text-gray-500 hover:text-gray-700 text-xl">&times;</button>
+        <h2 id="modalTitle" class="text-xl font-semibold mb-4"></h2>
+        <div id="modalContent"></div>
+        <button id="saveModalBtn" class="mt-4 bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">Save</button>
+      </div>
+    </div>
+    <script type="module">
+      import orderCodes from './src/ordercodes.json';
+      import aoeDropdowns from './src/aoedropdowns.json';
+      import aoeQuestions from './src/aoequestions.json';
 
+      let obrCount = 0;
+      function addOBR() {
+        const template = document.getElementById('obrTemplate');
+        const clone = template.content.cloneNode(true);
+        const obrSection = clone.querySelector('.obr-section');
+        const orderCodeInput = clone.querySelector('.order-code-input');
+        const orderDescInput = clone.querySelector('.order-desc-input');
+        const dropdown = clone.querySelector('.order-code-dropdown');
+        const addObxBtn = clone.querySelector('button[onclick^="addOBX"]');
+        let filteredCodes = orderCodes;
+        let currentOrderCode = '';
+        let aoeForOrder = [];
+        let obxCount = 0;
+
+        // Hide Add OBX button initially
+        addObxBtn.style.display = 'none';
+
+        function updateAddObxBtn() {
+          addObxBtn.style.display = (currentOrderCode && obxCount < aoeForOrder.length) ? '' : 'none';
+        }
+
+        orderCodeInput.addEventListener('input', function() {
+          const val = this.value.trim().toLowerCase();
+          filteredCodes = orderCodes.filter(o =>
+            o.orderCode.toLowerCase().includes(val) ||
+            o.orderDesc.toLowerCase().includes(val)
+          );
+          renderDropdown();
+          addObxBtn.style.display = 'none';
+          orderDescInput.value = '';
+          currentOrderCode = '';
+          obrSection.querySelector('.obxContainer').innerHTML = '';
+          obxCount = 0;
+          aoeForOrder = [];
+        });
+        orderCodeInput.addEventListener('focus', renderDropdown);
+        orderCodeInput.addEventListener('blur', () => setTimeout(() => dropdown.classList.add('hidden'), 200));
+        function renderDropdown() {
+          dropdown.innerHTML = '';
+          if (!filteredCodes.length) {
+            dropdown.classList.add('hidden');
+            return;
+          }
+          filteredCodes.forEach(code => {
+            const item = document.createElement('div');
+            item.className = 'px-3 py-2 cursor-pointer hover:bg-blue-100';
+            item.textContent = `${code.orderCode} — ${code.orderDesc}`;
+            item.onclick = () => {
+              orderCodeInput.value = code.orderCode;
+              orderDescInput.value = code.orderDesc;
+              dropdown.classList.add('hidden');
+              currentOrderCode = code.orderCode;
+              // Find all AOE questions for this orderCode
+              aoeForOrder = aoeQuestions.filter(q => q.orderCode === currentOrderCode);
+              // Remove all OBX
+              obrSection.querySelector('.obxContainer').innerHTML = '';
+              obxCount = 0;
+              // Auto-add required OBX for this orderCode
+              aoeForOrder.filter(q => q.required === 'R').forEach(aoeObj => {
+                addOBXForAoe(aoeObj);
+              });
+              updateAddObxBtn();
+            };
+            dropdown.appendChild(item);
+          });
+          dropdown.classList.remove('hidden');
+        }
+
+        // Add OBX for a specific aoeQuestion object
+        function addOBXForAoe(aoeObj) {
+          const obxContainer = obrSection.querySelector('.obxContainer');
+          const obxTemplate = document.getElementById('obxTemplate');
+          const obxClone = obxTemplate.content.cloneNode(true);
+          const obxSection = obxClone.querySelector('.obx-section');
+          obxSection.setAttribute('data-aoeid', aoeObj.aoeId);
+          // Remove all children from obxSection to avoid template leftovers
+          obxSection.innerHTML = '';
+          // Question label/input
+          const questionLabel = document.createElement('label');
+          questionLabel.className = 'block mb-2';
+          questionLabel.textContent = 'Observation Question';
+          const questionInput = document.createElement('input');
+          questionInput.name = 'Question';
+          questionInput.className = 'mt-1 block w-full border border-gray-300 rounded px-3 py-2 bg-gray-100';
+          questionInput.value = aoeObj.aoeQuestion;
+          questionInput.readOnly = true;
+          questionLabel.appendChild(questionInput);
+          // Answer label/input
+          const answerLabel = document.createElement('label');
+          answerLabel.className = 'block mb-2 relative';
+          answerLabel.textContent = 'Observation Answer';
+          let answerInput;
+          if (aoeObj.dropdowns === 'Y') {
+            answerInput = document.createElement('input');
+            answerInput.name = 'Answer';
+            answerInput.className = 'mt-1 block w-full border border-gray-300 rounded px-3 py-2';
+            answerInput.placeholder = 'Type to search...';
+            answerInput.autocomplete = 'off';
+            const answerDropdown = document.createElement('div');
+            answerDropdown.className = 'aoe-answer-dropdown hidden absolute z-50 bg-white border border-gray-300 rounded shadow max-h-60 overflow-y-auto w-full';
+            let filteredAnswers = aoeDropdowns.filter(a => a.orderCode === currentOrderCode && a.aoeId === aoeObj.aoeId).map(a => a.aoeDropdown);
+            function renderAnswerDropdown() {
+              answerDropdown.innerHTML = '';
+              if (!filteredAnswers.length) {
+                answerDropdown.classList.add('hidden');
+                return;
+              }
+              filteredAnswers.forEach(a => {
+                const item = document.createElement('div');
+                item.className = 'px-3 py-2 cursor-pointer hover:bg-blue-100';
+                item.textContent = a;
+                item.onclick = () => {
+                  answerInput.value = a;
+                  answerDropdown.classList.add('hidden');
+                };
+                answerDropdown.appendChild(item);
+              });
+              answerDropdown.classList.remove('hidden');
+            }
+            answerInput.addEventListener('input', function() {
+              const val = this.value.trim().toLowerCase();
+              filteredAnswers = aoeDropdowns.filter(a => a.orderCode === currentOrderCode && a.aoeId === aoeObj.aoeId && a.aoeDropdown.toLowerCase().includes(val)).map(a => a.aoeDropdown);
+              renderAnswerDropdown();
+            });
+            answerInput.addEventListener('focus', renderAnswerDropdown);
+            answerInput.addEventListener('blur', () => setTimeout(() => answerDropdown.classList.add('hidden'), 200));
+            answerLabel.appendChild(answerInput);
+            answerLabel.appendChild(answerDropdown);
+          } else {
+            answerInput = document.createElement('input');
+            answerInput.name = 'Answer';
+            answerInput.className = 'mt-1 block w-full border border-gray-300 rounded px-3 py-2';
+            answerLabel.appendChild(answerInput);
+          }
+          obxSection.appendChild(questionLabel);
+          obxSection.appendChild(answerLabel);
+          obxContainer.appendChild(obxSection);
+          obxCount++;
+        }
+
+        // Add OBX for next available (non-required) aoe
+        addObxBtn.onclick = function() {
+          // Find next non-required aoe not already added
+          const addedAoeIds = Array.from(obrSection.querySelectorAll('.obx-section')).map(s => s.getAttribute('data-aoeid'));
+          const nextAoe = aoeForOrder.find(q => q.required !== 'R' && !addedAoeIds.includes(q.aoeId));
+          if (nextAoe) {
+            addOBXForAoe(nextAoe);
+            updateAddObxBtn();
+          }
+        };
+
+        document.getElementById('obrContainer').appendChild(clone);
+      }
+      window.addOBR = addOBR;
+
+      // Remove old addOBX
+      window.addOBX = function() {};
+
+      function toggleSectionEdit(sectionId) {
+        const section = document.getElementById(sectionId);
+        const modalTitle = document.getElementById('modalTitle');
+        const modalContent = document.getElementById('modalContent');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const saveModalBtn = document.getElementById('saveModalBtn');
+
+        // Clear previous content
+        modalTitle.textContent = '';
+        modalContent.innerHTML = '';
+
+        // Set modal title and content based on section
+        switch (sectionId) {
+          case 'aegisLabSection':
+            modalTitle.textContent = 'Edit Aegis Lab Information';
+            modalContent.innerHTML = `
+              <label class="block mb-2">Client ID
+                <input name="MSH.4" required class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Date and Time
+                <input name="MSH.7" type="datetime-local" required class="mt-1 block w-full border border-gray-300 rounded px-3 py-2 text-sm appearance-none h-[32px]" />
+              </label>
+            `;
+            break;
+          case 'patientSection':
+            modalTitle.textContent = 'Edit Patient Information';
+            modalContent.innerHTML = `
+            <label class="block mb-2">Patient ID
+              <input name="PID.2" required class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+            </label>
+            <label class="block mb-2">Patient Name
+              <input name="PID.5" required class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+            </label>
+              <label class="block mb-2">Address
+                <input name="PID.11_address" required class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Street Address" />
+              </label>
+              <label class="block mb-2">Address 2
+                <input name="PID.11_address2" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Apt, Suite, etc." />
+              </label>
+              <label class="block mb-2">City
+                <input name="PID.11_city" required class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">State
+                <input name="PID.11_state" required class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Zip Code
+                <input name="PID.11_zip" required class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Phone Number
+                <input name="PID.13" required class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">DOB
+                <input name="PID.7" type="date" required class="mt-1 block w-full border border-gray-300 rounded px-3 py-2 text-sm appearance-none h-[32px]" />
+              </label>
+              <label class="block mb-2">Administrative Sex
+                <select name="PID.8" required class="mt-1 block w-full border border-gray-300 rounded px-3 py-2 text-sm appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <option value="">Select</option>
+                  <option value="M">Male</option>
+                  <option value="F">Female</option>
+                  <option value="O">Other</option>
+                </select>
+              </label>
+              <label class="block mb-2">Race
+                <input name="PID.10" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">SSN
+                <input name="PID.19" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Ethnic Group
+                <input name="PID.22" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+            `;
+            break;
+          case 'providerSection':
+            modalTitle.textContent = 'Edit Provider & Billing';
+            modalContent.innerHTML = `
+              <label class="block mb-2">Referring Doctor
+                <input name="PV1.8" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Ordering Provider
+                <input name="OBR.16" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Bill Codes/Diagnosis Code
+                <input name="DG1.3" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Bill Type
+                <select name="IN1.47" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2 appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <option value="">Select</option>
+                  <option value="C">Direct Bill (C)</option>
+                  <option value="P">Patient Bill (P)</option>
+                  <option value="T">Third Party (T)</option>
+                </select>
+              </label>
+            `;
+            break;
+          case 'insuranceSection':
+            modalTitle.textContent = 'Edit Insurance';
+            modalContent.innerHTML = `
+              <label class="block mb-2">Insurance Company ID
+                <input name="IN1.3" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Insurance Company Name
+                <input name="IN1.4" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Insurance Company Address
+                <input name="IN1.5_address" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Street Address" />
+              </label>
+              <label class="block mb-2">Address 2
+                <input name="IN1.5_address2" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Apt, Suite, etc." />
+              </label>
+              <label class="block mb-2">City
+                <input name="IN1.5_city" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">State
+                <input name="IN1.5_state" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Zip Code
+                <input name="IN1.5_zip" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Insured Name
+                <input name="IN1.16" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Insured's Relationship to Patient
+                <select name="IN1.17" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2 appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <option value="">Select</option>
+                  <option value="SEL">Self</option>
+                  <option value="SPO">Spouse</option>
+                  <option value="CHD">Child</option>
+                  <option value="OTH">Other</option>
+                </select>
+              </label>
+              <label class="block mb-2">Insured's DOB
+                <input name="IN1.18" type="date" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2 text-sm appearance-none h-[32px]" />
+              </label>
+              <label class="block mb-2">Insured's Address
+                <input name="IN1.19_address" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Street Address" />
+              </label>
+              <label class="block mb-2">Address 2
+                <input name="IN1.19_address2" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Apt, Suite, etc." />
+              </label>
+              <label class="block mb-2">City
+                <input name="IN1.19_city" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">State
+                <input name="IN1.19_state" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Zip Code
+                <input name="IN1.19_zip" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Policy Number
+                <input name="IN1.36" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Insured's Administrative Sex
+                <select name="IN1.43" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2 appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
+                  <option value="">Select</option>
+                  <option value="M">Male</option>
+                  <option value="F">Female</option>
+                  <option value="O">Other</option>
+                </select>
+              </label>
+            `;
+            break;
+          case 'guarantorSection':
+            modalTitle.textContent = 'Edit Guarantor';
+            modalContent.innerHTML = `
+              <label class="block mb-2">Guarantor Name
+                <input name="GT1.3" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Guarantor Address
+                <input name="GT1.5_address" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Street Address" />
+              </label>
+              <label class="block mb-2">Address 2
+                <input name="GT1.5_address2" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Apt, Suite, etc." />
+              </label>
+              <label class="block mb-2">City
+                <input name="GT1.5_city" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">State
+                <input name="GT1.5_state" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Zip Code
+                <input name="GT1.5_zip" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Guarantor Phone Number
+                <input name="GT1.6" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+            `;
+            break;
+        }
+
+        // Show the modal
+        document.getElementById('editModal').classList.remove('hidden');
+
+        // Close modal event
+        closeModalBtn.onclick = function() {
+          document.getElementById('editModal').classList.add('hidden');
+        };
+
+        // Save modal event
+        saveModalBtn.onclick = function() {
+          const inputs = modalContent.querySelectorAll('input, select');
+          inputs.forEach(input => {
+            const displaySpan = document.getElementById('display-' + input.name.replace(/\./g, '').replace(/_/g, ''));
+            if (displaySpan) displaySpan.textContent = input.value;
+          });
+          document.getElementById('editModal').classList.add('hidden');
+        };
+      }
+
+      function saveSection(sectionId) {
+        const section = document.getElementById(sectionId);
+        const inputs = section.querySelectorAll('.section-edit input, .section-edit select');
+        inputs.forEach(input => {
+          const displaySpan = document.getElementById('display-' + input.name.replace(/\./g, '').replace(/_/g, ''));
+          if (displaySpan) displaySpan.textContent = input.value;
+        });
+        toggleSectionEdit(sectionId);
+      }
+
+      document.getElementById('orderForm').onsubmit = function(e) {
+        e.preventDefault();
+        exportHL7ForFileMaker();
+      };
+    </script>
     <script type="module">
       import "./src/index.js";
     </script>

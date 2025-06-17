@@ -1,0 +1,2312 @@
+[
+    {
+      "orderCode": "00021",
+      "orderDesc": "Drug-Drug Interaction (DDI) - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00023",
+      "orderDesc": "Drug-Drug Interaction (DDI) - OF",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00115",
+      "orderDesc": "Specimen Validity Tests (SVT) - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00165B",
+      "orderDesc": "PainComp 165 - Blood",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Blood",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00165U",
+      "orderDesc": "PainComp 165 - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00167B",
+      "orderDesc": "PainComp 167 - Blood",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Blood",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00167U",
+      "orderDesc": "PainComp 167 - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00168U",
+      "orderDesc": "QMP - Urine",
+      "profile": "Y",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00169",
+      "orderDesc": "PainComp - Oral Fluid",
+      "profile": "Y",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00169i",
+      "orderDesc": "PainComp Oral Fluid, D/L",
+      "profile": "Y",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00180",
+      "orderDesc": "Methylphenidate - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00181",
+      "orderDesc": "EtS (Alcohol Metabolite) - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00184",
+      "orderDesc": "Amphetamines - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00184i",
+      "orderDesc": "Amphetamines + D/L MethAmp - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00186",
+      "orderDesc": "SNRI Profile - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00187",
+      "orderDesc": "SSRI Profile - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00188OB",
+      "orderDesc": "NatalCare Comprehensive - Urine",
+      "profile": "Y",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00195U",
+      "orderDesc": "QMP Minus Gabapentin/Pregabalin - Urine",
+      "profile": "Y",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00197U",
+      "orderDesc": "QMP Plus - Urine",
+      "profile": "Y",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00197iU",
+      "orderDesc": "QMP Plus D/L - Urine",
+      "profile": "Y",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00199U",
+      "orderDesc": "PainComp QMP 199",
+      "profile": "Y",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00252",
+      "orderDesc": "Ethanol - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00801",
+      "orderDesc": "SUD Profile",
+      "profile": "Y",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00802",
+      "orderDesc": "Mental Health Profile",
+      "profile": "Y",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00930",
+      "orderDesc": "Ethanol - Blood",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Blood",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "00931",
+      "orderDesc": "Ethanol Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01017B",
+      "orderDesc": "Buprenorphine - Blood",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Blood",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01045U",
+      "orderDesc": "Butorphanol - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01091",
+      "orderDesc": "Carbamazepine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01220U",
+      "orderDesc": "Cyclobenzaprine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01221",
+      "orderDesc": "Cyclobenzaprine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01240",
+      "orderDesc": "Dextromethorphan / Levorphanol - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01241",
+      "orderDesc": "Dextromethorphan Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01280Uco",
+      "orderDesc": "Diphenhydramine Confirm Only - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01281",
+      "orderDesc": "Diphenhydramine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01365B",
+      "orderDesc": "Gabapentin - Blood",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Blood",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01365OF",
+      "orderDesc": "Gabapentin - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01365U",
+      "orderDesc": "Gabapentin - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01441",
+      "orderDesc": "Ketamine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01443",
+      "orderDesc": "Ketamine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01490",
+      "orderDesc": "LSD Healthcare",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01557",
+      "orderDesc": "Metaxalone Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01558U",
+      "orderDesc": "Metaxalone - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01591",
+      "orderDesc": "Methocarbamol Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01630U",
+      "orderDesc": "Mirtazapine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01632",
+      "orderDesc": "Mirtazapine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01637U",
+      "orderDesc": "Nalbuphine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01638U",
+      "orderDesc": "Naltrexone - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01640U",
+      "orderDesc": "Naloxone - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01641",
+      "orderDesc": "Naloxone Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01642U",
+      "orderDesc": "Benztropine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01643",
+      "orderDesc": "Benztropine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01644U",
+      "orderDesc": "Lemborexant - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01645",
+      "orderDesc": "Lemborexant Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01646U",
+      "orderDesc": "Viloxazine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01647",
+      "orderDesc": "Viloxazine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01648U",
+      "orderDesc": "Trihexyphenidyl - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01649",
+      "orderDesc": "Trihexyphenidyl Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01650",
+      "orderDesc": "Naltrexone - Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01651",
+      "orderDesc": "Tizanidine - Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01790U",
+      "orderDesc": "Pentazocine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01815U",
+      "orderDesc": "pH Screen & Confirm",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01929B",
+      "orderDesc": "Pregabalin - Blood",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Blood",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01929OF",
+      "orderDesc": "Pregabalin - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01929U",
+      "orderDesc": "Pregabalin - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01950",
+      "orderDesc": "Promethazine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "01951",
+      "orderDesc": "Promethazine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "02122",
+      "orderDesc": "Topiramate - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "02123",
+      "orderDesc": "Topiramate Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "02125B",
+      "orderDesc": "Tramadol - Blood",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Blood",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "02125U",
+      "orderDesc": "Tramadol PainComp - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "02127",
+      "orderDesc": "Trazodone - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "02128",
+      "orderDesc": "Trazodone Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "02210",
+      "orderDesc": "Sedative Hypnotics - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "02211",
+      "orderDesc": "Sedative Hypnotics Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04003co",
+      "orderDesc": "Meperidine Confirm Only - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04101U",
+      "orderDesc": "Baclofen - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04102U",
+      "orderDesc": "Methocarbamol - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04103U",
+      "orderDesc": "Tizanidine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04104U",
+      "orderDesc": "Chlorzoxazone - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04105U",
+      "orderDesc": "Dantrolene - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04110",
+      "orderDesc": "Synthetic Stimulants",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04111",
+      "orderDesc": "Baclofen Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04120",
+      "orderDesc": "Designer Benzodiazepines",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04125OF",
+      "orderDesc": "Tramadol - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04125co",
+      "orderDesc": "Tramadol Confirm Only - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04130U",
+      "orderDesc": "Antipsychotics - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04131",
+      "orderDesc": "Antipsychotics Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04140",
+      "orderDesc": "Synthetic Cannabinoids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04160",
+      "orderDesc": "Designer Opioids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04180",
+      "orderDesc": "Methylphenidate Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04184PCTi",
+      "orderDesc": "Methamphetamine D/L Isomer",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04186",
+      "orderDesc": "SNRI Profile Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04187",
+      "orderDesc": "SSRI Profile Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04200",
+      "orderDesc": "Hallucinogens/Dissociatives",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04201",
+      "orderDesc": "NPS Other",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04410OF",
+      "orderDesc": "Amphetamines - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04410iOF",
+      "orderDesc": "Amphetamines D/L - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04420",
+      "orderDesc": "Barbiturates - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04420OF",
+      "orderDesc": "Butalbital LC/MS - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04430OF",
+      "orderDesc": "Benzodiazepines - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04430co",
+      "orderDesc": "Benzodiazepines Confirm Only - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04440",
+      "orderDesc": "Marijuana - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04440OF",
+      "orderDesc": "Marijuana - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04450",
+      "orderDesc": "Cocaine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04450OF",
+      "orderDesc": "Cocaine - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04458",
+      "orderDesc": "Methadone Confirmation - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04458OF",
+      "orderDesc": "Methadone - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04458co",
+      "orderDesc": "Methadone",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04460OF",
+      "orderDesc": "Opiates - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04460co",
+      "orderDesc": "Opiates Confirm Only - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04462OF",
+      "orderDesc": "Heroin - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04462co",
+      "orderDesc": "Heroin Confirm Only - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04465",
+      "orderDesc": "Tapentadol - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04465OF",
+      "orderDesc": "Tapentadol - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04466",
+      "orderDesc": "Kratom (Mitragynine)",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04467",
+      "orderDesc": "Kratom (Mitragynine) Oral Flds",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04469OF",
+      "orderDesc": "Fentanyl - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04469co",
+      "orderDesc": "Fentanyl Confirm Only - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04470",
+      "orderDesc": "PCP - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04470OF",
+      "orderDesc": "Phencyclidine (PCP) - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04491",
+      "orderDesc": "Tricyclic Antidepressants - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04492",
+      "orderDesc": "Tricyclic Antidepressants OF",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04495OF",
+      "orderDesc": "Carisoprodol/Meprobamate - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04495co",
+      "orderDesc": "Carisoprodol/Meprobamate Confirm - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04496",
+      "orderDesc": "Buprenorphine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04496OF",
+      "orderDesc": "Buprenorphine - Oral Fluid",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04497",
+      "orderDesc": "Cotinine - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04600",
+      "orderDesc": "Hallucinogens/Dissociatives OF",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04601",
+      "orderDesc": "NPS Other Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04610",
+      "orderDesc": "Synthetic Stimulants OF",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04620",
+      "orderDesc": "Designer Benzodiazepines OF",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04640",
+      "orderDesc": "Synthetic Cannabinoids OF",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04660",
+      "orderDesc": "Designer Opioids Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04801",
+      "orderDesc": "Bupropion",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04802",
+      "orderDesc": "Lamotrigine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04803",
+      "orderDesc": "Levetiracetam",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04804",
+      "orderDesc": "Oxcarbazepine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04805",
+      "orderDesc": "Buspirone",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04806",
+      "orderDesc": "Clonidine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04807",
+      "orderDesc": "Guanfacine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04808",
+      "orderDesc": "Hydroxyzine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04809",
+      "orderDesc": "Suvorexant",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04810",
+      "orderDesc": "Vilazodone",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04811",
+      "orderDesc": "Vortioxetine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04812",
+      "orderDesc": "Carbamazepine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04813",
+      "orderDesc": "Lofexidine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04814",
+      "orderDesc": "Loperamide",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04815",
+      "orderDesc": "Lorcaserin",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04816",
+      "orderDesc": "Atomoxetine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04817",
+      "orderDesc": "Psilocybin",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04841",
+      "orderDesc": "Bupropion Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04842",
+      "orderDesc": "Lamotrigine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04843",
+      "orderDesc": "Levetiracetam Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04844",
+      "orderDesc": "Oxcarbazepine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04845",
+      "orderDesc": "Buspirone Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04846",
+      "orderDesc": "Clonidine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04847",
+      "orderDesc": "Guanfacine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04848",
+      "orderDesc": "Hydroxyzine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04850",
+      "orderDesc": "Lofexidine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04851",
+      "orderDesc": "Loperamide Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04852",
+      "orderDesc": "Lorcaserin Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04853",
+      "orderDesc": "Atomoxetine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04854",
+      "orderDesc": "Suvorexant Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04855",
+      "orderDesc": "Vortioxetine Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "04856",
+      "orderDesc": "Vilazodone Oral Fluids",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "06570",
+      "orderDesc": "STI Profile Multiplex",
+      "profile": "",
+      "performingDept": "Molecular",
+      "specimen": "First Void Urine, Urine",
+      "orderLoincCode": "92684-0",
+      "orderLoincDesc": "CT + NG + TV DNA Pnl Ur NAA+probe",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07001",
+      "orderDesc": "Acute Hepatitis Panel",
+      "profile": "Y",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "X03055",
+      "orderLoincDesc": "Acute Hepatitis Panel",
+      "codingSystem": "L"
+    },
+    {
+      "orderCode": "07002",
+      "orderDesc": "BMP - Basic Metabolic Panel",
+      "profile": "Y",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "24321-2",
+      "orderLoincDesc": "BMP - Basic metabolic panel",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07003",
+      "orderDesc": "CMP - Comp Metabolic Panel",
+      "profile": "Y",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "24323-8",
+      "orderLoincDesc": "CMP - Comp metabolic panel",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07004",
+      "orderDesc": "Renal Function Panel",
+      "profile": "Y",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "24362-6",
+      "orderLoincDesc": "Renal Function Panel",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07005",
+      "orderDesc": "Hepatic Function Panel",
+      "profile": "Y",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "24325-3",
+      "orderLoincDesc": "Hepatic Function Panel",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07006",
+      "orderDesc": "Lipid Panel Standard",
+      "profile": "Y",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "24331-1",
+      "orderLoincDesc": "Lipid Panel Standard",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07007",
+      "orderDesc": "CBC - Complete Blood Count",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Whole Blood",
+      "orderLoincCode": "58410-2",
+      "orderLoincDesc": "CBC panel Auto (Bld)",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07008",
+      "orderDesc": "CBC (includes diff/Plt)",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Whole Blood",
+      "orderLoincCode": "57021-8",
+      "orderLoincDesc": "CBC W Auto Diff Bld",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07009",
+      "orderDesc": "Hepatitis B Screen Panel w/Reflex",
+      "profile": "Y",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "77190-7",
+      "orderLoincDesc": "HBV core + surf Ab + surf Ag Pnl Ser",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07100",
+      "orderDesc": "HDL Cholesterol",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2085-9",
+      "orderLoincDesc": "HDL Cholesterol",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07102",
+      "orderDesc": "Cholesterol",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2093-3",
+      "orderLoincDesc": "Cholesterol",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07103",
+      "orderDesc": "Triglycerides",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2571-8",
+      "orderLoincDesc": "Triglycerides",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07104",
+      "orderDesc": "Blood Urea Nitrogen (BUN)",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "3094-0",
+      "orderLoincDesc": "Blood Urea Nitrogen (BUN)",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07105",
+      "orderDesc": "Calcium",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "17861-6",
+      "orderLoincDesc": "Calcium",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07106",
+      "orderDesc": "Chloride",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2075-0",
+      "orderLoincDesc": "Chloride",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07107",
+      "orderDesc": "Creatinine",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2160-0",
+      "orderLoincDesc": "Creatinine",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07108",
+      "orderDesc": "Glucose, Serum",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2345-7",
+      "orderLoincDesc": "Glucose, Serum",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07109",
+      "orderDesc": "Hemoglobin A1c, blood",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Whole Blood",
+      "orderLoincCode": "4548-4",
+      "orderLoincDesc": "Hemoglobin A1c, blood",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07111",
+      "orderDesc": "Hepatitis C RNA Qual PCR",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "11259-9",
+      "orderLoincDesc": "Hepatitis C RNA Qual PCR",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07112",
+      "orderDesc": "HIV Antibody Differentiation",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "80203-3",
+      "orderLoincDesc": "HIV 1 and 2 Ab IA.rapid Nom",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07114",
+      "orderDesc": "HIV-1/2 AG-Ab, 4th with reflex",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "56888-1",
+      "orderLoincDesc": "HIV-1/2 AG-Ab, 4th with reflex",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07115",
+      "orderDesc": "HSV Antibody Type 1/2, IgG",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "81621-5",
+      "orderLoincDesc": "HSV 1 + 2 IgG Pnl SerPl",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07116",
+      "orderDesc": "Potassium",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2823-3",
+      "orderLoincDesc": "Potassium",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07119",
+      "orderDesc": "Sodium",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2951-2",
+      "orderLoincDesc": "Sodium",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07120",
+      "orderDesc": "Testosterone, Total",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2986-8",
+      "orderLoincDesc": "Testosterone, Total",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07121",
+      "orderDesc": "T3 (Triiodothyronine), Free",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "83127-1",
+      "orderLoincDesc": "T3 (Triiodothyronine), Free",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07122",
+      "orderDesc": "T4 (Thyroxine), Free",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "83122-2",
+      "orderLoincDesc": "T4 (Thyroxine), Free",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07123",
+      "orderDesc": "Thyroid Stim. Hormone (TSH)",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "11579-0",
+      "orderLoincDesc": "Thyroid Stim. Hormone (TSH)",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07124",
+      "orderDesc": "Vitamin B12",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2132-9",
+      "orderLoincDesc": "Vitamin B12",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07125",
+      "orderDesc": "Vitamin D, 25-Hydroxy (Total)",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "62292-8",
+      "orderLoincDesc": "Vitamin D, 25-Hydroxy (Total)",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07126",
+      "orderDesc": "Carbamazepine",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "3432-2",
+      "orderLoincDesc": "Carbamazepine",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07127",
+      "orderDesc": "Lithium",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "14334-7",
+      "orderLoincDesc": "Lithium",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07128",
+      "orderDesc": "Valproic Acid, Total",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "4086-5",
+      "orderLoincDesc": "Valproic Acid, Total",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07129",
+      "orderDesc": "Hepatitis A IgM Antibody",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "13950-1",
+      "orderLoincDesc": "Hepatitis A IgM Antibody",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07130",
+      "orderDesc": "Hepatitis B Core IgM AB",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "24113-3",
+      "orderLoincDesc": "Hepatitis B virus core IgM Ab [Presence] in Serum or Plasma by Immunoassay",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07131",
+      "orderDesc": "Hepatitis B Surface Ag + rfx",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "5196-1",
+      "orderLoincDesc": "Hepatitis B Surface Ag + rfx",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07132",
+      "orderDesc": "Hepatitis C Ab +  rfx to qPCR",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "40726-2",
+      "orderLoincDesc": "Hepatitis C Ab + rfx to qPCR",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07133",
+      "orderDesc": "Carbon Dioxide",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "1963-8",
+      "orderLoincDesc": "Carbon Dioxide",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07134",
+      "orderDesc": "Albumin",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "1751-7",
+      "orderLoincDesc": "Albumin",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07135",
+      "orderDesc": "Total Protein",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2885-2",
+      "orderLoincDesc": "Total Protein",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07136",
+      "orderDesc": "Alkaline Phosphatase (ALP)",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "6768-6",
+      "orderLoincDesc": "Alkaline Phosphatase (ALP)",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07137",
+      "orderDesc": "Alanine Aminotransferase (ALT)",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "1743-4",
+      "orderLoincDesc": "Alanine Aminotransferase (ALT)",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07138",
+      "orderDesc": "Aspartate Aminotransferase AST",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "30239-8",
+      "orderLoincDesc": "Aspartate Aminotransferase AST",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07139",
+      "orderDesc": "Bilirubin, Total",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "1975-2",
+      "orderLoincDesc": "Bilirubin, Total",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07140",
+      "orderDesc": "Phosphorus",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2777-1",
+      "orderLoincDesc": "Phosphorus",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07141",
+      "orderDesc": "Bilirubin, Direct",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "1968-7",
+      "orderLoincDesc": "Bilirubin, Direct",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07146",
+      "orderDesc": "Syphilis IgG/IgM w/Reflex to Qual RPR",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "47236-5",
+      "orderLoincDesc": "Treponema pallidum IgG+IgM Ab [Presence] in Serum by Immunoassay",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07148",
+      "orderDesc": "Human Chorionic Gonadotropin (hCG), Quantitative Serum",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "45194-8",
+      "orderLoincDesc": "Choriogonadotropin.intact+Beta subunit [Units/volume] in Serum or Plasma",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07149",
+      "orderDesc": "Hepatitis B Surface (HBs) AB",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "22322-2",
+      "orderLoincDesc": "Hepatitis B virus surface Ab [Presence] in Serum",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07150",
+      "orderDesc": "Hepatitis B Core AG (HBc) AB",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "13952-7",
+      "orderLoincDesc": "Hepatitis B virus core Ab [Presence] in Serum or Plasma by Immunoassay",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07151",
+      "orderDesc": "Folate (Folic Acid)",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2284-8",
+      "orderLoincDesc": "Folate [Mass/volume] in Serum or Plasma",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07152",
+      "orderDesc": "Prolactin",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2842-3",
+      "orderLoincDesc": "Prolactin [Mass/volume] in Serum or Plasma",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07153",
+      "orderDesc": "Prostate-Specific Antigen (PSA), Total",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "2857-1",
+      "orderLoincDesc": "Prostate specific Ag [Mass/volume] in Serum or Plasma",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07154",
+      "orderDesc": "Prostate-Specific Antigen (PSA), total with reflex to PSA, free",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "10886-0",
+      "orderLoincDesc": "Prostate Specific Ag Free [Mass/volume] in Serum or Plasma",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "07156",
+      "orderDesc": "Magnesium",
+      "profile": "",
+      "performingDept": "Clinical",
+      "specimen": "Serum",
+      "orderLoincCode": "19123-9",
+      "orderLoincDesc": "Magnesium [Mass/volume] in Serum or Plasma",
+      "codingSystem": "LN"
+    },
+    {
+      "orderCode": "20400",
+      "orderDesc": "Cardiovascular Profile - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "30000B",
+      "orderDesc": "PainComp Medication Compliance - Blood",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Blood",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "30000S",
+      "orderDesc": "PainComp Medication Compliance - Saliva",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Oral Fluid",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "30000U",
+      "orderDesc": "PainComp Medication Compliance - Urine",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "30001U",
+      "orderDesc": "Cardiovascular Medication Compliance - U",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "30002U",
+      "orderDesc": "Urinary Biomarkers",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "49997",
+      "orderDesc": "Healthcare Hold",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "Urine",
+      "orderLoincCode": "X03687",
+      "orderLoincDesc": "Healthcare Hold",
+      "codingSystem": "L"
+    },
+    {
+      "orderCode": "92001",
+      "orderDesc": "Aegis Required Information",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "All",
+      "orderLoincCode": "",
+      "orderLoincDesc": "",
+      "codingSystem": ""
+    },
+    {
+      "orderCode": "ADMIN NPOP",
+      "orderDesc": "Admin Hold: Non Pop Sample",
+      "profile": "",
+      "performingDept": "Toxicology",
+      "specimen": "All",
+      "orderLoincCode": "X03686",
+      "orderLoincDesc": "Admin Hold: Non Pop Sample",
+      "codingSystem": "L"
+    }
+  ]
