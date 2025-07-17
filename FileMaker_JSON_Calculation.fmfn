@@ -1,0 +1,205 @@
+/*
+ * FileMaker Calculation: Generate JSON for Web Form Population
+ * 
+ * This calculation creates a JSON object that matches the expected format
+ * for the populateFormFromJSON() function in the web interface.
+ * 
+ * Field mappings are based on the HL7 standard and the web form structure.
+ * 
+ * USAGE:
+ * 1. Create a calculation field in FileMaker
+ * 2. Set result type to "Text"
+ * 3. Copy this calculation into the field
+ * 4. Adjust field names to match your FileMaker database schema
+ * 5. Use this field's value to pass JSON to the web viewer
+ */
+
+JSONSetElement ( 
+  "{}" ;
+  
+  // === AEGIS LAB INFORMATION (MSH Segment) ===
+  [ "MSH_4" ; Client_ID ; JSONString ] ;
+  [ "MSH_7" ; 
+    // Convert FileMaker timestamp to ISO format (YYYY-MM-DDTHH:MM)
+    Year ( Message_DateTime ) & "-" & 
+    Right ( "00" & Month ( Message_DateTime ) ; 2 ) & "-" & 
+    Right ( "00" & Day ( Message_DateTime ) ; 2 ) & "T" & 
+    Right ( "00" & Hour ( Message_DateTime ) ; 2 ) & ":" & 
+    Right ( "00" & Minute ( Message_DateTime ) ; 2 )
+  ; JSONString ] ;
+  [ "MSH_10" ; Order_Number ; JSONString ] ;
+  
+  // === PATIENT INFORMATION (PID Segment) ===
+  [ "PID_2" ; Patient_ID ; JSONString ] ;
+  [ "PID_2_5" ; Patient_ID_Type ; JSONString ] ;
+  [ "PID_5" ; Patient_Name ; JSONString ] ;
+  [ "PID_7" ; 
+    // Convert FileMaker date to ISO format (YYYY-MM-DD)
+    Year ( Patient_DOB ) & "-" & 
+    Right ( "00" & Month ( Patient_DOB ) ; 2 ) & "-" & 
+    Right ( "00" & Day ( Patient_DOB ) ; 2 )
+  ; JSONString ] ;
+  [ "PID_8" ; Patient_Sex ; JSONString ] ;
+  [ "PID_10" ; Patient_Race ; JSONString ] ;
+  [ "PID_11_address" ; Patient_Address ; JSONString ] ;
+  [ "PID_11_address2" ; Patient_Address2 ; JSONString ] ;
+  [ "PID_11_city" ; Patient_City ; JSONString ] ;
+  [ "PID_11_state" ; Patient_State ; JSONString ] ;
+  [ "PID_11_zip" ; Patient_Zip ; JSONString ] ;
+  [ "PID_13" ; Patient_Phone ; JSONString ] ;
+  [ "PID_19" ; Patient_SSN ; JSONString ] ;
+  [ "PID_22" ; Patient_Ethnicity ; JSONString ] ;
+  
+  // === PROVIDER INFORMATION (PV1/OBR Segments) ===
+  [ "PV1_8" ; Referring_Doctor ; JSONString ] ;
+  [ "OBR_16" ; Ordering_Provider ; JSONString ] ;
+  [ "OBR_7" ; 
+    // Convert FileMaker timestamp to ISO format (YYYY-MM-DDTHH:MM)
+    Year ( Collection_DateTime ) & "-" & 
+    Right ( "00" & Month ( Collection_DateTime ) ; 2 ) & "-" & 
+    Right ( "00" & Day ( Collection_DateTime ) ; 2 ) & "T" & 
+    Right ( "00" & Hour ( Collection_DateTime ) ; 2 ) & ":" & 
+    Right ( "00" & Minute ( Collection_DateTime ) ; 2 )
+  ; JSONString ] ;
+  [ "OBR_15" ; Specimen_Source ; JSONString ] ;
+  [ "OBR_15_1" ; Specimen_Matrix_Code ; JSONString ] ;
+  [ "DG1_3" ; Diagnosis_Code ; JSONString ] ;
+  [ "IN1_47" ; Bill_Type ; JSONString ] ;
+  
+  // === INSURANCE INFORMATION (IN1 Segment) ===
+  [ "IN1_3" ; Insurance_Company_ID ; JSONString ] ;
+  [ "IN1_4" ; Insurance_Company_Name ; JSONString ] ;
+  [ "IN1_5_address" ; Insurance_Address ; JSONString ] ;
+  [ "IN1_5_address2" ; Insurance_Address2 ; JSONString ] ;
+  [ "IN1_5_city" ; Insurance_City ; JSONString ] ;
+  [ "IN1_5_state" ; Insurance_State ; JSONString ] ;
+  [ "IN1_5_zip" ; Insurance_Zip ; JSONString ] ;
+  [ "IN1_16" ; Insured_Name ; JSONString ] ;
+  [ "IN1_17" ; Insured_Relationship ; JSONString ] ;
+  [ "IN1_18" ; 
+    // Convert FileMaker date to ISO format (YYYY-MM-DD)
+    Year ( Insured_DOB ) & "-" & 
+    Right ( "00" & Month ( Insured_DOB ) ; 2 ) & "-" & 
+    Right ( "00" & Day ( Insured_DOB ) ; 2 )
+  ; JSONString ] ;
+  [ "IN1_19_address" ; Insured_Address ; JSONString ] ;
+  [ "IN1_19_address2" ; Insured_Address2 ; JSONString ] ;
+  [ "IN1_19_city" ; Insured_City ; JSONString ] ;
+  [ "IN1_19_state" ; Insured_State ; JSONString ] ;
+  [ "IN1_19_zip" ; Insured_Zip ; JSONString ] ;
+  [ "IN1_36" ; Policy_Number ; JSONString ] ;
+  [ "IN1_43" ; Insured_Sex ; JSONString ] ;
+  
+  // === GUARANTOR INFORMATION (GT1 Segment) ===
+  [ "GT1_3" ; Guarantor_Name ; JSONString ] ;
+  [ "GT1_5_address" ; Guarantor_Address ; JSONString ] ;
+  [ "GT1_5_address2" ; Guarantor_Address2 ; JSONString ] ;
+  [ "GT1_5_city" ; Guarantor_City ; JSONString ] ;
+  [ "GT1_5_state" ; Guarantor_State ; JSONString ] ;
+  [ "GT1_5_zip" ; Guarantor_Zip ; JSONString ] ;
+  [ "GT1_6" ; Guarantor_Phone ; JSONString ] ;
+  
+  // === DYNAMIC ORDER INFORMATION (OBR/OBX) ===
+  // Note: For multiple orders, you would need to create a loop or use related records
+  // This example shows a single order (OBR1)
+  [ "OBR1_OrderCode" ; Order_Code ; JSONString ] ;
+  [ "OBR1_OrderDescription" ; Order_Description ; JSONString ] ;
+  
+  // === AOE OBSERVATIONS (OBX) ===
+  // Note: For multiple AOEs, you would need to create additional entries
+  // This example shows a single AOE (OBX1)
+  [ "OBR1_OBX1_Question" ; AOE_Question_1 ; JSONString ] ;
+  [ "OBR1_OBX1_Answer" ; AOE_Answer_1 ; JSONString ]
+)
+
+/*
+ * FIELD MAPPING REFERENCE:
+ * 
+ * Replace the following placeholder field names with your actual FileMaker field names:
+ * 
+ * AEGIS LAB INFORMATION:
+ * - Client_ID → Your client ID field
+ * - Message_DateTime → Your message date/time field
+ * - Order_Number → Your order number field
+ * 
+ * PATIENT INFORMATION:
+ * - Patient_ID → Your patient ID field
+ * - Patient_ID_Type → Your patient ID type field (MR, SS, DL, PI)
+ * - Patient_Name → Your patient name field
+ * - Patient_DOB → Your patient date of birth field
+ * - Patient_Sex → Your patient sex field (M, F, O)
+ * - Patient_Race → Your patient race field
+ * - Patient_Address → Your patient address field
+ * - Patient_Address2 → Your patient address line 2 field
+ * - Patient_City → Your patient city field
+ * - Patient_State → Your patient state field
+ * - Patient_Zip → Your patient zip code field
+ * - Patient_Phone → Your patient phone field
+ * - Patient_SSN → Your patient SSN field
+ * - Patient_Ethnicity → Your patient ethnicity field
+ * 
+ * PROVIDER INFORMATION:
+ * - Referring_Doctor → Your referring doctor field
+ * - Ordering_Provider → Your ordering provider field
+ * - Collection_DateTime → Your collection date/time field
+ * - Specimen_Source → Your specimen source field (URINE, BLOOD, SALIVA, etc.)
+ * - Specimen_Matrix_Code → Your specimen matrix code field
+ * - Diagnosis_Code → Your diagnosis code field
+ * - Bill_Type → Your bill type field (C, P, T)
+ * 
+ * INSURANCE INFORMATION:
+ * - Insurance_Company_ID → Your insurance company ID field
+ * - Insurance_Company_Name → Your insurance company name field
+ * - Insurance_Address → Your insurance address field
+ * - Insurance_Address2 → Your insurance address line 2 field
+ * - Insurance_City → Your insurance city field
+ * - Insurance_State → Your insurance state field
+ * - Insurance_Zip → Your insurance zip code field
+ * - Insured_Name → Your insured name field
+ * - Insured_Relationship → Your insured relationship field (SEL, SPO, CHD, OTH)
+ * - Insured_DOB → Your insured date of birth field
+ * - Insured_Address → Your insured address field
+ * - Insured_Address2 → Your insured address line 2 field
+ * - Insured_City → Your insured city field
+ * - Insured_State → Your insured state field
+ * - Insured_Zip → Your insured zip code field
+ * - Policy_Number → Your policy number field
+ * - Insured_Sex → Your insured sex field (M, F, O)
+ * 
+ * GUARANTOR INFORMATION:
+ * - Guarantor_Name → Your guarantor name field
+ * - Guarantor_Address → Your guarantor address field
+ * - Guarantor_Address2 → Your guarantor address line 2 field
+ * - Guarantor_City → Your guarantor city field
+ * - Guarantor_State → Your guarantor state field
+ * - Guarantor_Zip → Your guarantor zip code field
+ * - Guarantor_Phone → Your guarantor phone field
+ * 
+ * ORDER INFORMATION:
+ * - Order_Code → Your order code field
+ * - Order_Description → Your order description field
+ * - AOE_Question_1 → Your first AOE question field
+ * - AOE_Answer_1 → Your first AOE answer field
+ * 
+ * USAGE IN SCRIPT:
+ * 
+ * To use this JSON in a FileMaker script to populate the web form:
+ * 
+ * Set Variable [ $json ; Value: YourJSONCalculationField ]
+ * Perform JavaScript in Web Viewer [ "window.populateFormFromJSON(" & $json & ")" ]
+ * 
+ * ADVANCED USAGE - MULTIPLE ORDERS:
+ * 
+ * For multiple orders, you can extend this calculation or create a loop:
+ * 
+ * Set Variable [ $json ; Value: YourJSONCalculationField ]
+ * Set Variable [ $counter ; Value: 1 ]
+ * Loop
+ *   Set Variable [ $orderCode ; Value: GetNthRecord ( Order_Code ; $counter ) ]
+ *   Exit Loop If [ IsEmpty ( $orderCode ) ]
+ *   Set Variable [ $json ; Value: JSONSetElement ( $json ; 
+ *     "OBR" & $counter & "_OrderCode" ; $orderCode ; JSONString ) ]
+ *   Set Variable [ $counter ; Value: $counter + 1 ]
+ * End Loop
+ * Perform JavaScript in Web Viewer [ "window.populateFormFromJSON(" & $json & ")" ]
+ */

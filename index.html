@@ -15,6 +15,7 @@
           <div class="section-display">
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Client ID:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-MSH4"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Date and Time:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-MSH7"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Order Number:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-MSH10"></span></div>
           </div>
         </div>
         <div id="patientSection" class="bg-white rounded shadow p-4 grid grid-cols-1 md:grid-cols-2 gap-4 relative">
@@ -22,16 +23,17 @@
           <button type="button" class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs" onclick="window.toggleSectionEdit('patientSection')">Edit</button>
           <div class="section-display">
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Patient ID:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID2"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Patient ID Type:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID25"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Patient Name:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID5"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">DOB:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID7"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Sex:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID8"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Race:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID10"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Address:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID11address"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Address 2:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID11address2"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">City:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID11city"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">State:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID11state"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Zip Code:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID11zip"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Phone Number:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID13"></span></div>
-            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">DOB:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID7"></span></div>
-            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Sex:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID8"></span></div>
-            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Race:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID10"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">SSN:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID19"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Ethnic Group:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PID22"></span></div>
           </div>
@@ -42,6 +44,9 @@
           <div class="section-display">
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Referring Doctor:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PV18"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Ordering Provider:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-OBR16"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Collection Date/Time:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-OBR7"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Specimen Source:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-OBR15"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Specimen Matrix Code:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-OBR151"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Bill/Diagnosis Code:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-DG13"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Bill Type:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN147"></span></div>
           </div>
@@ -90,11 +95,11 @@
             <h2 class="text-lg font-semibold mb-4">Order Request
               <span class="text-red-500 ml-2 cursor-pointer font-normal text-sm" onclick="this.closest('.obr-section').remove()">Remove</span>
             </h2>
-            <label class="block mb-2">Order Code
+            <label class="block mb-2">Order Code <span class="text-red-500">*</span>
               <input name="OrderCode" class="order-code-input mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Type to search..." autocomplete="off" />
               <div class="order-code-dropdown hidden absolute z-50 bg-white border border-gray-300 rounded shadow max-h-60 overflow-y-auto w-full"></div>
             </label>
-            <label class="block mb-2">Order Description
+            <label class="block mb-2">Order Description <span class="text-red-500">*</span>
               <input name="OrderDescription" class="order-desc-input mt-1 block w-full border border-gray-300 rounded px-3 py-2 bg-gray-100" readonly />
             </label>
             <div class="obxContainer"></div>
@@ -106,15 +111,23 @@
             <h3 class="text-md font-semibold mb-2">Observation
               <span class="text-red-500 ml-2 cursor-pointer font-normal text-sm" onclick="this.closest('.obx-section').remove()">Remove</span>
             </h3>
-            <label class="block mb-2">Observation Question
+            <label class="block mb-2">Observation Question <span class="text-red-500">*</span>
               <input name="Question" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
             </label>
-            <label class="block mb-2">Observation Answer
+            <label class="block mb-2">Observation Answer <span class="text-red-500">*</span>
               <input name="Answer" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
             </label>
           </div>
         </template>
         <button type="submit" class="w-full bg-green-600 text-white px-3 py-2 rounded hover:bg-green-700 mt-2">Submit Order</button>
+        
+        <!-- Cancel Order Button -->
+        <button type="button" onclick="cancelLabOrder()" class="w-full bg-red-600 text-white px-3 py-2 rounded hover:bg-red-700 mt-3 border-2 border-red-700">Cancel Order</button>
+        
+        <!-- Validation error message -->
+        <div id="validationError" class="mt-2 p-3 bg-red-100 border border-red-400 text-red-700 rounded hidden">
+          <div id="validationErrorMessage"></div>
+        </div>
       </form>
     </div>
     <!-- Modal for editing sections -->
@@ -507,12 +520,7 @@
         });
         toggleSectionEdit(sectionId);
       }
-
-      document.getElementById('orderForm').onsubmit = function(e) {
-        e.preventDefault();
-        exportHL7ForFileMaker();
-      };
-    </script>
+      </script>
     <script type="module">
       import "./src/index.js";
     </script>

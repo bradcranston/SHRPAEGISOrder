@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validation Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">Validation Test Results</h1>
+        
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">✅ Validation Features Implemented:</h2>
+            <ul class="space-y-2 text-sm">
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Cannot submit without at least one order request</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> All required fields from sectionFields are validated</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Order Code and Order Description are required for each order request</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Observation Question and Answer are required for each observation</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Visual indicators (*) added to required fields</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Empty required fields are highlighted with red borders</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Validation errors are displayed in a user-friendly format</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Form submission is prevented when validation fails</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> <strong>FileMaker scripts are NOT executed if validation fails</strong></li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Both JSON and HL7 exports validate before execution</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Cancel Order button calls FileMaker script "CancelLabOrder"</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Cancel Order includes user confirmation dialog</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Validation errors are cleared when user starts editing</li>
+            </ul>
+        </div>
+        
+        <div class="bg-blue-50 rounded-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">🔧 Validation & FileMaker Protection:</h2>
+            <ol class="space-y-2 text-sm">
+                <li><strong>1.</strong> Check if at least one order request (OBR) exists</li>
+                <li><strong>2.</strong> Validate all required fields from sectionFields are populated</li>
+                <li><strong>3.</strong> For each order request:
+                    <ul class="ml-4 mt-1 space-y-1">
+                        <li>• Order Code must be filled</li>
+                        <li>• Order Description must be filled</li>
+                        <li>• For each observation (OBX):
+                            <ul class="ml-4 mt-1 space-y-1">
+                                <li>- Question must be filled</li>
+                                <li>- Answer must be filled</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li><strong>4.</strong> Show validation errors with field highlighting</li>
+                <li><strong>5.</strong> <span class="bg-red-100 px-2 py-1 rounded text-red-800">PREVENT form submission if validation fails</span></li>
+                <li><strong>6.</strong> <span class="bg-red-100 px-2 py-1 rounded text-red-800">BLOCK FileMaker scripts (JSON & HL7) if validation fails</span></li>
+                <li><strong>7.</strong> Only execute FileMaker scripts after successful validation</li>
+            </ol>
+        </div>
+        
+        <div class="bg-green-50 rounded-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">🎯 Test Scenarios:</h2>
+            <p class="text-sm mb-4">To test the validation, try these scenarios in the main application:</p>
+            <ol class="space-y-2 text-sm">
+                <li><strong>1.</strong> Try to submit without adding any order requests - should show error</li>
+                <li><strong>2.</strong> Add an order request but leave fields empty - should highlight empty required fields</li>
+                <li><strong>3.</strong> Add observations but leave Question/Answer empty - should validate OBX fields</li>
+                <li><strong>4.</strong> Fill all required fields - should allow submission</li>
+                <li><strong>5.</strong> Leave some required static fields empty - should validate sectionFields</li>
+                <li><strong>6.</strong> Click "Cancel Order" button - should show confirmation dialog</li>
+                <li><strong>7.</strong> Confirm cancellation - should call FileMaker script "CancelLabOrder"</li>
+            </ol>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <a href="/" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors">
+                Back to Main Application
+            </a>
+        </div>
+    </div>
+</body>
+</html>
