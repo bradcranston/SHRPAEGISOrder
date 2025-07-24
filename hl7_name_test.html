@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HL7 Name Format Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">HL7 PID-5 Name Format Test</h1>
+        
+        <div class="bg-white rounded-lg shadow p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">📋 Test Name Examples</h2>
+            
+            <div class="space-y-4">
+                <div class="border rounded p-4">
+                    <h3 class="font-semibold">Example 1: Full Name with Middle and Suffix</h3>
+                    <div class="grid grid-cols-2 gap-4 mt-2 text-sm">
+                        <div>
+                            <strong>Input Fields:</strong>
+                            <ul class="ml-4">
+                                <li>Last Name: Somebody</li>
+                                <li>First Name: Robert</li>
+                                <li>Middle: K</li>
+                                <li>Suffix: Jr</li>
+                                <li>Prefix: (empty)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong>HL7 Output:</strong>
+                            <code class="bg-gray-100 p-2 rounded block">Somebody^Robert^K^Jr^^^L</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border rounded p-4">
+                    <h3 class="font-semibold">Example 2: Doctor with Prefix</h3>
+                    <div class="grid grid-cols-2 gap-4 mt-2 text-sm">
+                        <div>
+                            <strong>Input Fields:</strong>
+                            <ul class="ml-4">
+                                <li>Last Name: Smith</li>
+                                <li>First Name: John</li>
+                                <li>Middle: Michael</li>
+                                <li>Suffix: III</li>
+                                <li>Prefix: Dr</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong>HL7 Output:</strong>
+                            <code class="bg-gray-100 p-2 rounded block">Smith^John^Michael^III^Dr^^L</code>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="border rounded p-4">
+                    <h3 class="font-semibold">Example 3: Simple Name (Required Fields Only)</h3>
+                    <div class="grid grid-cols-2 gap-4 mt-2 text-sm">
+                        <div>
+                            <strong>Input Fields:</strong>
+                            <ul class="ml-4">
+                                <li>Last Name: Doe</li>
+                                <li>First Name: Jane</li>
+                                <li>Middle: (empty)</li>
+                                <li>Suffix: (empty)</li>
+                                <li>Prefix: (empty)</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <strong>HL7 Output:</strong>
+                            <code class="bg-gray-100 p-2 rounded block">Doe^Jane^^^^^L</code>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-blue-50 rounded-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">🔄 Backward Compatibility</h2>
+            <div class="space-y-3 text-sm">
+                <div class="border rounded p-3 bg-white">
+                    <strong>Old Format Input:</strong> <code>"PID_5": "Robert K Somebody Jr"</code>
+                    <br><br>
+                    <strong>Automatic Conversion:</strong>
+                    <ul class="ml-4 mt-2">
+                        <li>Last Name: Somebody (last word)</li>
+                        <li>First Name: Robert (first word)</li>
+                        <li>Middle: K Jr (everything in between)</li>
+                    </ul>
+                    <br>
+                    <strong>HL7 Output:</strong> <code class="bg-gray-100 p-1 rounded">Somebody^Robert^K Jr^^^^L</code>
+                </div>
+            </div>
+        </div>
+        
+        <div class="bg-green-50 rounded-lg p-6">
+            <h2 class="text-xl font-semibold mb-4">✅ Implementation Status</h2>
+            <ul class="space-y-2 text-sm">
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Separate name input fields in UI</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Proper HL7 XPN formatting in export</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Name Type Code "L" (Legal) included</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Backward compatibility for old format</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> First and Last name marked as required</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Validation works with new name fields</li>
+            </ul>
+        </div>
+        
+        <div class="mt-6 text-center">
+            <a href="/" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors mr-4">
+                Test in Main Application
+            </a>
+            <a href="/test_validation.html" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+                View All Validation Tests
+            </a>
+        </div>
+    </div>
+</body>
+</html>

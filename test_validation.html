@@ -25,8 +25,31 @@
                 <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Both JSON and HL7 exports validate before execution</li>
                 <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Cancel Order button calls FileMaker script "CancelLabOrder"</li>
                 <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Cancel Order includes user confirmation dialog</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> <strong>HL7 PID-5 uses proper XPN format (Family^Given^Middle^Suffix^Prefix^^L)</strong></li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Separate name fields (Last, First, Middle, Suffix, Prefix)</li>
+                <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Backward compatibility for old PID_5 full name format</li>
                 <li class="flex items-center"><span class="text-green-500 mr-2">✓</span> Validation errors are cleared when user starts editing</li>
             </ul>
+        </div>
+        
+        <div class="bg-yellow-50 rounded-lg p-6 mb-6">
+            <h2 class="text-xl font-semibold mb-4">🏥 HL7 Patient Name Format (PID-5)</h2>
+            <div class="text-sm space-y-2">
+                <p><strong>XPN Data Type Format:</strong> <code>&lt;Family Name&gt;^&lt;Given Name&gt;^&lt;Middle Names&gt;^&lt;Suffix&gt;^&lt;Prefix&gt;^^&lt;Name Type Code&gt;</code></p>
+                <p><strong>Example:</strong> <code>Somebody^Robert^K^Jr^^^L</code></p>
+                <div class="mt-3">
+                    <p><strong>Name Fields:</strong></p>
+                    <ul class="ml-4 space-y-1">
+                        <li>• <strong>Last Name</strong> (Family Name) - Required</li>
+                        <li>• <strong>First Name</strong> (Given Name) - Required</li>
+                        <li>• <strong>Middle Name/Initial</strong> - Optional</li>
+                        <li>• <strong>Suffix</strong> (Jr, III, etc.) - Optional</li>
+                        <li>• <strong>Prefix</strong> (Dr, etc.) - Optional</li>
+                        <li>• <strong>Name Type Code</strong> = "L" (Legal name)</li>
+                    </ul>
+                </div>
+                <p class="mt-3"><strong>Backward Compatibility:</strong> Old "Patient Name" field data is automatically split into separate name components.</p>
+            </div>
         </div>
         
         <div class="bg-blue-50 rounded-lg p-6 mb-6">

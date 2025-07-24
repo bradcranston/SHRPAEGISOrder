@@ -13,7 +13,11 @@ const sectionFields = {
       { value: 'DL', label: 'Driver\'s License' },
       { value: 'PI', label: 'Patient Internal Identifier' },
     ] },
-    { label: 'Patient Name', name: 'PID_5', type: 'text', required: true },
+    { label: 'Patient Last Name', name: 'PID_5_family', type: 'text', required: true },
+    { label: 'Patient First Name', name: 'PID_5_given', type: 'text', required: true },
+    { label: 'Patient Middle Name/Initial', name: 'PID_5_middle', type: 'text' },
+    { label: 'Patient Suffix (Jr, III, etc)', name: 'PID_5_suffix', type: 'text' },
+    { label: 'Patient Prefix (Dr, etc)', name: 'PID_5_prefix', type: 'text' },
     { label: 'DOB', name: 'PID_7', type: 'date', required: true },
     { label: 'Administrative Sex', name: 'PID_8', type: 'select', required: true, options: [
       { value: '', label: 'Select' },
@@ -175,6 +179,24 @@ function getAllDisplayFieldKeys() {
 function populateFormFromJSON(json) {
   const data = typeof json === 'string' ? JSON.parse(json) : json;
   if (!data || typeof data !== 'object') return;
+  
+  // Handle backward compatibility for old PID_5 format (full name)
+  if (data.PID_5 && typeof data.PID_5 === 'string' && !data.PID_5_family && !data.PID_5_given) {
+    const fullName = data.PID_5.trim();
+    const nameParts = fullName.split(/\s+/);
+    if (nameParts.length >= 2) {
+      data.PID_5_family = nameParts[nameParts.length - 1]; // Last word as last name
+      data.PID_5_given = nameParts[0]; // First word as first name
+      if (nameParts.length > 2) {
+        // Everything in between as middle name
+        data.PID_5_middle = nameParts.slice(1, -1).join(' ');
+      }
+    } else if (nameParts.length === 1) {
+      data.PID_5_family = fullName;
+    }
+    // Remove the old field
+    delete data.PID_5;
+  }
   
   // Enhanced field mapping function
   function findValueForField(data, fieldName) {
@@ -373,6 +395,20 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
       pad(d.getSeconds())
     );
   }
+  
+  // Format patient name according to HL7 XPN data type
+  // XPN: <Family Name>^<Given Name>^<Second and Further Given Names>^<Suffix>^<Prefix>^^<Name Type Code>
+  function formatPatientName() {
+    const family = esc(getVal('display-PID5family'));
+    const given = esc(getVal('display-PID5given'));
+    const middle = esc(getVal('display-PID5middle'));
+    const suffix = esc(getVal('display-PID5suffix'));
+    const prefix = esc(getVal('display-PID5prefix'));
+    
+    // Format as Family^Given^Middle^Suffix^Prefix^^L (L = Legal name type)
+    return `${family}^${given}^${middle}^${suffix}^${prefix}^^L`;
+  }
+  
   // MSH
   const msh4 = getVal('display-MSH4');
   const msh7raw = getVal('display-MSH7');
@@ -387,7 +423,11 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
     "MSH_10": "ORD123456",
     "PID_2": "P123456",
     "PID_2_5": "MR",
-    "PID_5": "John Doe",
+    "PID_5_family": "Doe",
+    "PID_5_given": "John",
+    "PID_5_middle": "M",
+    "PID_5_suffix": "",
+    "PID_5_prefix": "",
     "PID_7": "1980-01-01",
     "PID_8": "M",
     "PID_10": "White",
@@ -442,7 +482,7 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
     esc(getVal('display-PID2')) + '^^^' + esc(getVal('display-PID25')), // 2: Patient ID with type
     '', // 3: Patient Identifier List
     '', // 4: Alt Patient ID
-    esc(getVal('display-PID5')), // 5: Patient Name
+    formatPatientName(), // 5: Patient Name (XPN format)
     '', // 6: Mother's Maiden Name
     esc(getVal('display-PID7')), // 7: DOB
     esc(getVal('display-PID8')), // 8: Administrative Sex
@@ -654,7 +694,11 @@ window.testRoundTrip = function testRoundTrip() {
     "MSH_10": "ORD123456",
     "PID_2": "P123456",
     "PID_2_5": "MR",
-    "PID_5": "John Doe",
+    "PID_5_family": "Doe",
+    "PID_5_given": "John",
+    "PID_5_middle": "M",
+    "PID_5_suffix": "",
+    "PID_5_prefix": "",
     "PID_7": "1980-01-01",
     "PID_8": "M",
     "PID_10": "White",
