@@ -48,17 +48,20 @@
           <div class="section-display">
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Referring Doctor:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PV18"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Ordering Provider:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-OBR16"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Ordering Provider NPI:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-OBR16NPI"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Collection Date/Time:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-OBR7"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Specimen Source:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-OBR15"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Specimen Matrix Code:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-OBR151"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Bill/Diagnosis Code:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-DG13"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Bill Type:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN147"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Referring Doctor NPI:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-PV18NPI"></span></div>
           </div>
         </div>
         <div id="insuranceSection" class="bg-white rounded shadow p-4 grid grid-cols-1 md:grid-cols-2 gap-4 relative">
           <h2 class="text-xl font-semibold mb-2 col-span-full">Insurance</h2>
           <button type="button" class="absolute top-2 right-2 bg-blue-500 text-white px-2 py-1 rounded text-xs" onclick="window.toggleSectionEdit('insuranceSection')">Edit</button>
           <div class="section-display">
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Insurance Plan ID:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN12"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Company ID:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN13"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Company Name:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN14"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Company Address:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN15address"></span></div>
@@ -66,7 +69,9 @@
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">City:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN15city"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">State:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN15state"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Zip Code:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN15zip"></span></div>
-            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Insured Name:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN116"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Insured Last Name:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN116family"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Insured First Name:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN116given"></span></div>
+            <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Insured Middle Name:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN116middle"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Relationship to Patient:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN117"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Insured's DOB:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN118"></span></div>
             <div class="flex items-start mb-1"><span class="font-semibold min-w-[180px]">Insured's Address:</span> <span class="bg-gray-100 rounded px-2 py-1 ml-2 text-gray-800" id="display-IN119address"></span></div>
@@ -389,7 +394,8 @@
                 <input name="OBR.16" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
               </label>
               <label class="block mb-2">Bill Codes/Diagnosis Code
-                <input name="DG1.3" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+                <input name="DG1.3" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Z79.899^Other long term drug therapy^I10 or just Z79.899" />
+                <div class="text-xs text-gray-500 mt-1">Format: ICD-10 code or code^description^I10</div>
               </label>
               <label class="block mb-2">Bill Type
                 <select name="IN1.47" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2 appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">
@@ -425,8 +431,14 @@
               <label class="block mb-2">Zip Code
                 <input name="IN1.5_zip" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
               </label>
-              <label class="block mb-2">Insured Name
-                <input name="IN1.16" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              <label class="block mb-2">Insured Last Name
+                <input name="IN1.16_family" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Insured First Name
+                <input name="IN1.16_given" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
+              </label>
+              <label class="block mb-2">Insured Middle Name
+                <input name="IN1.16_middle" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
               </label>
               <label class="block mb-2">Insured's Relationship to Patient
                 <select name="IN1.17" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2 appearance-none bg-white focus:outline-none focus:ring-2 focus:ring-blue-500">

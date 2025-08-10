@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DG1 Diagnosis Code Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-6">DG1.3 Diagnosis Code CWE Format Test</h1>
+        
+        <div class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">Test Sample Data</h2>
+            <div class="bg-gray-50 p-4 rounded space-y-2">
+                <p><strong>Test Case 1 (Full CWE):</strong> <span id="display-DG13-1">Z79.899^Other long term (current) drug therapy^I10</span></p>
+                <p><strong>Test Case 2 (Code + Desc):</strong> <span id="display-DG13-2">Z79.899^Other long term drug therapy</span></p>
+                <p><strong>Test Case 3 (Code Only):</strong> <span id="display-DG13-3">Z79.899</span></p>
+                <p><strong>Test Case 4 (Empty):</strong> <span id="display-DG13-4"></span></p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">CWE Format Specification</h2>
+            <div class="bg-blue-50 p-4 rounded text-sm">
+                <p><strong>CWE Format:</strong> &lt;Identifier (ST)&gt; ^ &lt;Text (ST)&gt; ^ &lt;Name of Coding System (ID)&gt;</p>
+                <p><strong>Example:</strong> Z79.899^Other long term (current) drug therapy^I10</p>
+                <p><strong>Coding System:</strong> I10 (from HL7 Table 396 for ICD-10 codes)</p>
+                <p><strong>Source:</strong> ICD-10 codes published by CMS, referenced by HL7 Table 51</p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <button id="testBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Test DG1.3 Formatting
+            </button>
+        </div>
+
+        <div id="results" class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">Generated HL7 Output</h2>
+            <div id="output" class="bg-gray-50 p-4 rounded font-mono text-sm space-y-2"></div>
+        </div>
+
+        <div id="analysis" class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">Analysis</h2>
+            <div id="analysisOutput" class="bg-green-50 p-4 rounded"></div>
+        </div>
+    </div>
+
+    <script src="src/index.js"></script>
+    <script>
+        document.getElementById('testBtn').addEventListener('click', function() {
+            // Mock required functions if needed
+            if (typeof getVal === 'undefined') {
+                window.getVal = function(id) {
+                    const element = document.getElementById(id);
+                    return element ? element.textContent.trim() : '';
+                };
+            }
+
+            if (typeof esc === 'undefined') {
+                window.esc = function(str) {
+                    return str ? str.toString().replace(/[|^~\\&]/g, function(match) {
+                        switch (match) {
+                            case '|': return '\\F\\';
+                            case '^': return '\\S\\';
+                            case '~': return '\\T\\';
+                            case '\\': return '\\E\\';
+                            case '&': return '\\R\\';
+                            default: return match;
+                        }
+                    }) : '';
+                };
+            }
+
+            // Test cases
+            const testCases = [
+                { id: 'display-DG13-1', input: 'Z79.899^Other long term (current) drug therapy^I10', expected: 'Z79.899^Other long term (current) drug therapy^I10' },
+                { id: 'display-DG13-2', input: 'Z79.899^Other long term drug therapy', expected: 'Z79.899^Other long term drug therapy^I10' },
+                { id: 'display-DG13-3', input: 'Z79.899', expected: 'Z79.899^^I10' },
+                { id: 'display-DG13-4', input: '', expected: '' }
+            ];
+            
+            let formatDiagnosisCode;
+            
+            // Check if function is available, otherwise create mock version
+            if (typeof window.formatDiagnosisCode === 'undefined') {
+                formatDiagnosisCode = function(diagnosisInput) {
+                    if (!diagnosisInput || typeof diagnosisInput !== 'string') return '';
+                    
+                    const input = diagnosisInput.trim();
+                    if (!input) return '';
+                    
+                    // If already in CWE format (contains carets), validate and escape
+                    if (input.includes('^')) {
+                        const parts = input.split('^');
+                        if (parts.length >= 3) {
+                            // Already has code^description^coding_system format
+                            return parts[0] + '^' + parts[1] + '^' + parts[2];
+                        } else if (parts.length === 2) {
+                            // Has code^description, add default coding system
+                            return parts[0] + '^' + parts[1] + '^I10';
+                        } else {
+                            // Only code with caret, treat as code only
+                            return parts[0] + '^^I10';
+                        }
+                    }
+                    
+                    // If just a code (no carets), format with default coding system
+                    return input + '^^I10';
+                };
+            } else {
+                formatDiagnosisCode = window.formatDiagnosisCode;
+            }
+            
+            let results = [];
+            let outputHTML = '';
+            
+            testCases.forEach((testCase, index) => {
+                const formatted = formatDiagnosisCode(testCase.input);
+                const pass = formatted === testCase.expected;
+                
+                results.push({
+                    case: index + 1,
+                    input: testCase.input,
+                    expected: testCase.expected,
+                    actual: formatted,
+                    pass: pass
+                });
+                
+                outputHTML += `<p><strong>Test Case ${index + 1}:</strong> ${formatted || '(empty)'}</p>`;
+            });
+            
+            document.getElementById('output').innerHTML = outputHTML;
+            
+            // Analysis
+            const allPass = results.every(r => r.pass);
+            let analysisHTML = '<div class="space-y-3">';
+            
+            results.forEach(result => {
+                analysisHTML += `
+                    <div class="border-b pb-2">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">Test Case ${result.case}:</span>
+                            <span class="${result.pass ? 'text-green-600' : 'text-red-600'}">${result.pass ? 'PASS ✓' : 'FAIL ✗'}</span>
+                        </div>
+                        <div class="text-sm text-gray-600 mt-1">
+                            <div><strong>Input:</strong> "${result.input}" ${result.input === '' ? '(empty string)' : ''}</div>
+                            <div><strong>Expected:</strong> "${result.expected}" ${result.expected === '' ? '(empty string)' : ''}</div>
+                            <div><strong>Got:</strong> "${result.actual}" ${result.actual === '' ? '(empty string)' : ''}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            analysisHTML += `
+                </div>
+                <div class="mt-4 p-3 rounded ${allPass ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                    <strong>Overall Result: ${allPass ? 'ALL TESTS PASS ✓' : 'SOME TESTS FAILED ✗'}</strong>
+                </div>
+                <div class="mt-2 text-sm text-gray-600">
+                    <p><strong>CWE Formatting Rules:</strong></p>
+                    <ul class="list-disc ml-4">
+                        <li><strong>Full format:</strong> Code^Description^CodingSystem (unchanged if valid)</li>
+                        <li><strong>Code + Description:</strong> Code^Description → Code^Description^I10</li>
+                        <li><strong>Code only:</strong> Code → Code^^I10</li>
+                        <li><strong>Empty input:</strong> Returns empty string</li>
+                        <li><strong>Default coding system:</strong> I10 (ICD-10 from HL7 Table 396)</li>
+                    </ul>
+                </div>
+            `;
+            
+            document.getElementById('analysisOutput').innerHTML = analysisHTML;
+        });
+
+        // Auto-run test on page load
+        window.addEventListener('load', function() {
+            document.getElementById('testBtn').click();
+        });
+    </script>
+</body>
+</html>

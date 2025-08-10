@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Format Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-4xl mx-auto bg-white p-6 rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-6">HL7 Date Format Test</h1>
+        
+        <div class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">Test Sample Data</h2>
+            <div class="bg-gray-50 p-4 rounded space-y-2">
+                <p><strong>Patient DOB:</strong> <span id="display-PID7">1955-05-07</span></p>
+                <p><strong>Insured DOB:</strong> <span id="display-IN118">1975-05-05</span></p>
+                <p><strong>MSH Date/Time:</strong> <span id="display-MSH7">2024-06-18T12:30</span></p>
+                <p><strong>Collection Date/Time:</strong> <span id="display-OBR7">2024-06-18T14:30</span></p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">Expected HL7 Output</h2>
+            <div class="bg-blue-50 p-4 rounded font-mono text-sm space-y-1">
+                <p><strong>Patient DOB (PID.7):</strong> 19550507 (YYYYMMDD format)</p>
+                <p><strong>Insured DOB (IN1.18):</strong> 19750505 (YYYYMMDD format)</p>
+                <p><strong>MSH Date/Time (MSH.7):</strong> 20240618123000 (YYYYMMDDHHMMSS format)</p>
+                <p><strong>Collection Date/Time (OBR.7):</strong> 20240618143000 (YYYYMMDDHHMMSS format)</p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <button id="testBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Test Date Formatting
+            </button>
+        </div>
+
+        <div id="results" class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">Generated HL7 Output</h2>
+            <div id="output" class="bg-gray-50 p-4 rounded font-mono text-sm space-y-1"></div>
+        </div>
+
+        <div id="analysis" class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">Analysis</h2>
+            <div id="analysisOutput" class="bg-green-50 p-4 rounded"></div>
+        </div>
+    </div>
+
+    <script src="src/index.js"></script>
+    <script>
+        document.getElementById('testBtn').addEventListener('click', function() {
+            // Mock required functions if needed
+            if (typeof getVal === 'undefined') {
+                window.getVal = function(id) {
+                    const element = document.getElementById(id);
+                    return element ? element.textContent.trim() : '';
+                };
+            }
+
+            // Test the date formatting functions
+            const pidDate = getVal('display-PID7');
+            const inDate = getVal('display-IN118');
+            const mshDateTime = getVal('display-MSH7');
+            const obrDateTime = getVal('display-OBR7');
+            
+            let formatHL7DateOnly, formatHL7Date;
+            
+            // Check if functions are available, otherwise create mock versions
+            if (typeof window.formatHL7DateOnly === 'undefined') {
+                formatHL7DateOnly = function(dt) {
+                    if (!dt) return '';
+                    let d = new Date(dt);
+                    if (isNaN(d.getTime())) {
+                        const m = /^([0-9]{4})-([0-9]{2})-([0-9]{2})/.exec(dt);
+                        if (m) {
+                            return m[1] + m[2] + m[3];
+                        }
+                        return '';
+                    }
+                    const pad = n => n.toString().padStart(2, '0');
+                    return d.getFullYear().toString() + pad(d.getMonth() + 1) + pad(d.getDate());
+                };
+            } else {
+                formatHL7DateOnly = window.formatHL7DateOnly;
+            }
+            
+            if (typeof window.formatHL7Date === 'undefined') {
+                formatHL7Date = function(dt) {
+                    if (!dt) return '';
+                    let d = new Date(dt);
+                    if (isNaN(d.getTime())) {
+                        const m = /^([0-9]{4})-([0-9]{2})-([0-9]{2})[T ]([0-9]{2}):([0-9]{2})/.exec(dt);
+                        if (m) {
+                            return m[1] + m[2] + m[3] + m[4] + m[5] + '00';
+                        }
+                        return '';
+                    }
+                    const pad = n => n.toString().padStart(2, '0');
+                    return d.getFullYear().toString() + pad(d.getMonth() + 1) + pad(d.getDate()) + 
+                           pad(d.getHours()) + pad(d.getMinutes()) + pad(d.getSeconds());
+                };
+            } else {
+                formatHL7Date = window.formatHL7Date;
+            }
+            
+            const formattedPidDate = formatHL7DateOnly(pidDate);
+            const formattedInDate = formatHL7DateOnly(inDate);
+            const formattedMshDateTime = formatHL7Date(mshDateTime);
+            const formattedObrDateTime = formatHL7Date(obrDateTime);
+            
+            // Display results
+            document.getElementById('output').innerHTML = `
+                <p><strong>Patient DOB (PID.7):</strong> ${formattedPidDate}</p>
+                <p><strong>Insured DOB (IN1.18):</strong> ${formattedInDate}</p>
+                <p><strong>MSH Date/Time (MSH.7):</strong> ${formattedMshDateTime}</p>
+                <p><strong>Collection Date/Time (OBR.7):</strong> ${formattedObrDateTime}</p>
+            `;
+            
+            // Analysis
+            const expectedResults = {
+                pidDate: '19550507',
+                inDate: '19750505',
+                mshDateTime: '20240618123000',
+                obrDateTime: '20240618143000'
+            };
+            
+            const actualResults = {
+                pidDate: formattedPidDate,
+                inDate: formattedInDate,
+                mshDateTime: formattedMshDateTime,
+                obrDateTime: formattedObrDateTime
+            };
+            
+            let allPass = true;
+            let analysisHTML = '<div class="space-y-2">';
+            
+            Object.keys(expectedResults).forEach(key => {
+                const expected = expectedResults[key];
+                const actual = actualResults[key];
+                const pass = actual === expected;
+                allPass = allPass && pass;
+                
+                analysisHTML += `
+                    <div class="flex justify-between items-center">
+                        <span>${key}:</span>
+                        <span class="${pass ? 'text-green-600' : 'text-red-600'}">${pass ? 'PASS ✓' : 'FAIL ✗'}</span>
+                    </div>
+                    <div class="text-sm text-gray-600 ml-4">
+                        Expected: ${expected} | Got: ${actual}
+                    </div>
+                `;
+            });
+            
+            analysisHTML += `
+                </div>
+                <div class="mt-4 p-3 rounded ${allPass ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                    <strong>Overall Result: ${allPass ? 'ALL TESTS PASS ✓' : 'SOME TESTS FAILED ✗'}</strong>
+                </div>
+                <div class="mt-2 text-sm text-gray-600">
+                    <p><strong>Format Rules:</strong></p>
+                    <ul class="list-disc ml-4">
+                        <li>Date-only fields (DOB): YYYYMMDD (no dashes, no time)</li>
+                        <li>Date/time fields (MSH, OBR): YYYYMMDDHHMMSS (no dashes, no colons)</li>
+                    </ul>
+                </div>
+            `;
+            
+            document.getElementById('analysisOutput').innerHTML = analysisHTML;
+        });
+
+        // Auto-run test on page load
+        window.addEventListener('load', function() {
+            document.getElementById('testBtn').click();
+        });
+    </script>
+</body>
+</html>

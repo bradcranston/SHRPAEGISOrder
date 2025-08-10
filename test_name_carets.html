@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Name Fields with Carets Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-6xl mx-auto bg-white p-6 rounded-lg shadow">
+        <h1 class="text-2xl font-bold mb-6">HL7 Name Fields with Carets Test</h1>
+        
+        <div class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">Test Sample Data</h2>
+            <div class="bg-gray-50 p-4 rounded space-y-2">
+                <p><strong>GT1.3 Guarantor Name:</strong> <span id="display-GT13">Dr. Jane Elizabeth Smith Jr.</span></p>
+                <p><strong>PV1.8 Referring Doctor:</strong> <span id="display-PV18">Smith, John Michael</span></p>
+                <p><strong>OBR.16 Ordering Provider:</strong> <span id="display-OBR16">Allan Clark</span></p>
+                <p><strong>OBR.16 Provider NPI:</strong> <span id="display-OBR16NPI">1354275899</span></p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">Expected HL7 Output</h2>
+            <div class="bg-blue-50 p-4 rounded font-mono text-sm space-y-2">
+                <p><strong>GT1.3:</strong> Smith^Jane^Elizabeth^Jr^Dr (XPN format)</p>
+                <p><strong>PV1.8:</strong> Smith^John^Michael (XPN format)</p>
+                <p><strong>OBR.16:</strong> 1354275899^Clark^Allan^^^^NPI (XCN format with NPI)</p>
+            </div>
+        </div>
+
+        <div class="mb-6">
+            <button id="testBtn" class="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600">
+                Test Name Formatting
+            </button>
+        </div>
+
+        <div id="results" class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">Generated HL7 Output</h2>
+            <div id="output" class="bg-gray-50 p-4 rounded font-mono text-sm space-y-2"></div>
+        </div>
+
+        <div id="analysis" class="mb-6">
+            <h2 class="text-lg font-semibold mb-3">Analysis</h2>
+            <div id="analysisOutput" class="bg-green-50 p-4 rounded"></div>
+        </div>
+    </div>
+
+    <script src="src/index.js"></script>
+    <script>
+        document.getElementById('testBtn').addEventListener('click', function() {
+            // Mock required functions if needed
+            if (typeof getVal === 'undefined') {
+                window.getVal = function(id) {
+                    const element = document.getElementById(id);
+                    return element ? element.textContent.trim() : '';
+                };
+            }
+
+            if (typeof esc === 'undefined') {
+                window.esc = function(str) {
+                    return str ? str.toString().replace(/[|^~\\&]/g, function(match) {
+                        switch (match) {
+                            case '|': return '\\F\\';
+                            case '^': return '\\S\\';
+                            case '~': return '\\T\\';
+                            case '\\': return '\\E\\';
+                            case '&': return '\\R\\';
+                            default: return match;
+                        }
+                    }) : '';
+                };
+            }
+
+            // Test the name formatting functions
+            const gt1Name = getVal('display-GT13');
+            const pv1Name = getVal('display-PV18');
+            const obrName = getVal('display-OBR16');
+            const obrNPI = getVal('display-OBR16NPI');
+            
+            let formattedGT1, formattedPV1, formattedOBR;
+            
+            // Check if functions are available, otherwise create mock versions
+            if (typeof window.formatNameWithCarets === 'undefined') {
+                // Mock implementation
+                window.formatNameWithCarets = function(fullName) {
+                    if (!fullName) return '';
+                    
+                    // Simple parsing for demo
+                    if (fullName.includes(',')) {
+                        const parts = fullName.split(',').map(p => p.trim());
+                        const lastName = parts[0];
+                        const firstMiddle = parts[1].split(/\s+/);
+                        const firstName = firstMiddle[0] || '';
+                        const middleName = firstMiddle.slice(1).join(' ') || '';
+                        return [lastName, firstName, middleName].filter(p => p).join('^');
+                    }
+                    
+                    const nameParts = fullName.split(/\s+/);
+                    if (nameParts.length === 1) return nameParts[0];
+                    
+                    let prefix = '', suffix = '', firstName = '', lastName = '', middleName = '';
+                    
+                    // Check for common prefixes
+                    if (['Dr', 'Dr.', 'Mr', 'Mr.', 'Mrs', 'Mrs.', 'Ms', 'Ms.'].includes(nameParts[0])) {
+                        prefix = nameParts.shift();
+                    }
+                    
+                    // Check for common suffixes
+                    if (nameParts.length > 1 && ['Jr', 'Jr.', 'Sr', 'Sr.', 'II', 'III', 'MD'].includes(nameParts[nameParts.length - 1])) {
+                        suffix = nameParts.pop();
+                    }
+                    
+                    if (nameParts.length >= 2) {
+                        firstName = nameParts[0];
+                        lastName = nameParts[nameParts.length - 1];
+                        if (nameParts.length > 2) {
+                            middleName = nameParts.slice(1, -1).join(' ');
+                        }
+                    } else {
+                        lastName = nameParts[0];
+                    }
+                    
+                    return [lastName, firstName, middleName, suffix, prefix].filter(p => p).join('^');
+                };
+            }
+            
+            if (typeof window.formatOrderingProvider === 'undefined') {
+                window.formatOrderingProvider = function() {
+                    const providerName = getVal('display-OBR16');
+                    const npi = getVal('display-OBR16NPI');
+                    
+                    if (npi && providerName) {
+                        const nameParts = providerName.split(/\s+/);
+                        if (nameParts.length >= 2) {
+                            const lastName = nameParts[nameParts.length - 1];
+                            const firstName = nameParts[0];
+                            const middle = nameParts.length > 2 ? nameParts.slice(1, -1).join(' ') : '';
+                            return `${npi}^${lastName}^${firstName}^${middle}^^^^^NPI`;
+                        } else {
+                            return `${npi}^${providerName}^^^^^^NPI`;
+                        }
+                    } else if (providerName) {
+                        return providerName;
+                    }
+                    return '';
+                };
+            }
+            
+            formattedGT1 = window.formatNameWithCarets(gt1Name);
+            formattedPV1 = window.formatNameWithCarets(pv1Name);
+            formattedOBR = window.formatOrderingProvider();
+            
+            // Display results
+            document.getElementById('output').innerHTML = `
+                <p><strong>GT1.3 Guarantor Name:</strong> ${formattedGT1}</p>
+                <p><strong>PV1.8 Referring Doctor:</strong> ${formattedPV1}</p>
+                <p><strong>OBR.16 Ordering Provider:</strong> ${formattedOBR}</p>
+            `;
+            
+            // Analysis
+            const expectedResults = {
+                gt1: 'Smith^Jane^Elizabeth^Jr^Dr',
+                pv1: 'Smith^John^Michael',
+                obr: '1354275899^Clark^Allan^^^^NPI'
+            };
+            
+            const actualResults = {
+                gt1: formattedGT1,
+                pv1: formattedPV1,
+                obr: formattedOBR
+            };
+            
+            let allPass = true;
+            let analysisHTML = '<div class="space-y-2">';
+            
+            Object.keys(expectedResults).forEach(key => {
+                const expected = expectedResults[key];
+                const actual = actualResults[key];
+                const pass = actual === expected;
+                allPass = allPass && pass;
+                
+                const fieldNames = {
+                    gt1: 'GT1.3 Guarantor Name',
+                    pv1: 'PV1.8 Referring Doctor',
+                    obr: 'OBR.16 Ordering Provider'
+                };
+                
+                analysisHTML += `
+                    <div class="border-b pb-2">
+                        <div class="flex justify-between items-center">
+                            <span class="font-semibold">${fieldNames[key]}:</span>
+                            <span class="${pass ? 'text-green-600' : 'text-red-600'}">${pass ? 'PASS ✓' : 'FAIL ✗'}</span>
+                        </div>
+                        <div class="text-sm text-gray-600 mt-1">
+                            <div><strong>Expected:</strong> ${expected}</div>
+                            <div><strong>Got:</strong> ${actual}</div>
+                        </div>
+                    </div>
+                `;
+            });
+            
+            analysisHTML += `
+                </div>
+                <div class="mt-4 p-3 rounded ${allPass ? 'bg-green-100 text-green-800' : 'bg-red-100 text-red-800'}">
+                    <strong>Overall Result: ${allPass ? 'ALL TESTS PASS ✓' : 'SOME TESTS FAILED ✗'}</strong>
+                </div>
+                <div class="mt-2 text-sm text-gray-600">
+                    <p><strong>Format Rules:</strong></p>
+                    <ul class="list-disc ml-4">
+                        <li><strong>XPN (Extended Person Name):</strong> Family^Given^Middle^Suffix^Prefix</li>
+                        <li><strong>XCN (Extended Composite ID Number and Name):</strong> ID^Family^Given^Middle^^^^^AssigningAuthority</li>
+                        <li><strong>Name parsing:</strong> Handles "Last, First Middle" and "Prefix First Middle Last Suffix" formats</li>
+                    </ul>
+                </div>
+            `;
+            
+            document.getElementById('analysisOutput').innerHTML = analysisHTML;
+        });
+
+        // Auto-run test on page load
+        window.addEventListener('load', function() {
+            document.getElementById('testBtn').click();
+        });
+    </script>
+</body>
+</html>

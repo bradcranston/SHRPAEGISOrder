@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HL7 Segment Fixes Test</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 p-8">
+    <div class="max-w-6xl mx-auto">
+        <h1 class="text-3xl font-bold mb-6">HL7 Segment Format Fixes</h1>
+        
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            
+            <!-- IN1 Segment Fixes -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-semibold mb-4 text-red-600">🩺 IN1 Segment (Insurance) - Fixed</h2>
+                <div class="space-y-3 text-sm">
+                    <div class="border-l-4 border-red-500 pl-3">
+                        <h3 class="font-semibold">Issues Fixed:</h3>
+                        <ul class="list-disc ml-4 space-y-1">
+                            <li>IN1.3 Insurance Company ID - now mapped correctly</li>
+                            <li>IN1.5 Insurance Company Address - now populated</li>
+                            <li>IN1.16 Name Of Insured - now uses XPN format with carets (family^given^middle)</li>
+                            <li>IN1.16 Name fields - split into separate last/first/middle name fields</li>
+                            <li>IN1.17 Insured's Relationship To Patient - now populated</li>
+                            <li>IN1.18 Insured's Date Of Birth - now populated</li>
+                            <li>IN1.19 Insured's Address - now populated</li>
+                            <li>IN1.36 Policy Number - now populated</li>
+                            <li>IN1.43 Insured's Administrative Sex - fixed position (was 40, now 43)</li>
+                            <li>IN1.47 Coverage Type - now populated</li>
+                            <li>Backward compatibility for old full name format in JSON import</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-3 rounded">
+                        <strong>Fixed Format:</strong><br>
+                        <code class="text-xs">IN1|1||INS123|Best Insurance|456 Insurance Ave^Suite 200^Nashville^TN^37201||||||||GAMGEE^SAMWISE^S|S|1951-07-10|1234 Maple St^^Springfield^IL^62704||||||||||||||||||ILX123456789||||||M||||C</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- GT1 Segment Fixes -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-semibold mb-4 text-orange-600">👥 GT1 Segment (Guarantor) - Fixed</h2>
+                <div class="space-y-3 text-sm">
+                    <div class="border-l-4 border-orange-500 pl-3">
+                        <h3 class="font-semibold">Issues Fixed:</h3>
+                        <ul class="list-disc ml-4 space-y-1">
+                            <li>Added proper field positioning with correct pipe separators</li>
+                            <li>GT1.3 Guarantor Name - now uses XPN format with carets</li>
+                            <li>Added intelligent name parsing for different formats</li>
+                            <li>Handles "Dr. Jane Elizabeth Smith Jr." → "Smith^Jane^Elizabeth^Jr^Dr"</li>
+                            <li>Handles "Last, First Middle" → "Last^First^Middle"</li>
+                            <li>Corrected field sequence order</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-3 rounded">
+                        <strong>Fixed Format:</strong><br>
+                        <code class="text-xs">GT1|1||Smith^Jane^Elizabeth^Jr^Dr||123 Main St^Apt 2^Nashville^TN^37203|555-123-4567</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DG1 Segment Fixes -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-semibold mb-4 text-purple-600">🔬 DG1 Segment (Diagnosis) - Fixed</h2>
+                <div class="space-y-3 text-sm">
+                    <div class="border-l-4 border-purple-500 pl-3">
+                        <h3 class="font-semibold">Issues Fixed:</h3>
+                        <ul class="list-disc ml-4 space-y-1">
+                            <li>DG1.3 now uses proper CWE (Coded with Exceptions) format</li>
+                            <li>Added intelligent diagnosis code parsing and formatting</li>
+                            <li>Supports multiple input formats: code only, code^description, or full CWE</li>
+                            <li>Automatically adds I10 coding system for ICD-10 codes per HL7 Table 396</li>
+                            <li>Follows CMS ICD-10 standards referenced by HL7 Table 51</li>
+                            <li>Enhanced UI with format guidance and examples</li>
+                        </ul>
+                    </div>
+                    <div class="bg-red-50 p-3 rounded">
+                        <strong>Before:</strong><br>
+                        <code class="text-xs">DG1|1||Opioid Dependence</code>
+                    </div>
+                    <div class="bg-green-50 p-3 rounded">
+                        <strong>After (CWE Format):</strong><br>
+                        <code class="text-xs">DG1|1||Z79.899^Other long term (current) drug therapy^I10</code>
+                        <br><br>
+                        <strong>CWE Format:</strong> <code>&lt;Identifier (ST)&gt;^&lt;Text (ST)&gt;^&lt;Name of Coding System (ID)&gt;</code><br>
+                        <strong>Supported Inputs:</strong><br>
+                        • "Z79.899" → "Z79.899^^I10"<br>
+                        • "Z79.899^Drug therapy" → "Z79.899^Drug therapy^I10"<br>
+                        • "Z79.899^Drug therapy^I10" → "Z79.899^Drug therapy^I10" (unchanged)
+                    </div>
+                </div>
+            </div>
+
+            <!-- PV1 Segment Fixes -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-semibold mb-4 text-purple-600">🏥 PV1 Segment (Visit) - Fixed</h2>
+                <div class="space-y-3 text-sm">
+                    <div class="border-l-4 border-purple-500 pl-3">
+                        <h3 class="font-semibold">Issues Fixed:</h3>
+                        <ul class="list-disc ml-4 space-y-1">
+                            <li>PV1.8 Referring Doctor - now uses XPN format with carets</li>
+                            <li>Added intelligent name parsing for different formats</li>
+                            <li>Handles "Smith, John Michael" → "Smith^John^Michael"</li>
+                            <li>Handles "Dr. John Smith" → "Smith^John^^Dr"</li>
+                            <li>Proper XPN formatting for referring physician</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-3 rounded">
+                        <strong>Fixed Format:</strong><br>
+                        <code class="text-xs">PV1|1||||||Smith^John^Michael</code>
+                    </div>
+                </div>
+            </div>
+
+            <!-- OBR Segment Fixes -->
+            <div class="bg-white rounded-lg shadow p-6">
+                <h2 class="text-xl font-semibold mb-4 text-blue-600">🧪 OBR Segment (Order) - Enhanced</h2>
+                <div class="space-y-3 text-sm">
+                    <div class="border-l-4 border-blue-500 pl-3">
+                        <h3 class="font-semibold">Issues Fixed:</h3>
+                        <ul class="list-disc ml-4 space-y-1">
+                            <li>OBR.2 Order Number - now populated from MSH.10</li>
+                            <li>OBR.16 Provider - now includes NPI and proper XCN format with carets</li>
+                            <li>Added separate NPI field in UI</li>
+                            <li>Enhanced provider name parsing: "Allan Clark" → "1354275899^Clark^Allan^^^^NPI"</li>
+                            <li>XCN format: ID^Family^Given^Middle^^^^^AssigningAuthority</li>
+                        </ul>
+                    </div>
+                    <div class="bg-green-50 p-3 rounded">
+                        <strong>Fixed Format:</strong><br>
+                        <code class="text-xs">OBR|1|ORDER123|ORDER123|Panel^Lab Panel^L||20240618143000|||||||||1354275899^Clark^Allan^^^^NPI</code>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Summary -->
+        <div class="bg-white rounded-lg shadow p-6 mt-6">
+            <h2 class="text-xl font-semibold mb-4">✅ Summary of All Fixes</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="font-semibold mb-2">New Fields Added:</h3>
+                    <ul class="text-sm space-y-1">
+                        <li>• Ordering Provider NPI (OBR_16_NPI)</li>
+                        <li>• Separate patient name fields (First, Last, Middle, Suffix, Prefix)</li>
+                        <li>• Proper CWE diagnosis code format</li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-semibold mb-2">Format Improvements:</h3>
+                    <ul class="text-sm space-y-1">
+                        <li>• IN1 segment field positioning corrected</li>
+                        <li>• GT1 name field prepared for caret formatting</li>
+                        <li>• OBR provider with NPI and proper XCN format</li>
+                        <li>• DG1 diagnosis with CWE data type</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Test Instructions -->
+        <div class="bg-blue-50 rounded-lg p-6 mt-6">
+            <h2 class="text-xl font-semibold mb-4">🧪 Testing Instructions</h2>
+            <ol class="text-sm space-y-2">
+                <li><strong>1.</strong> Fill out the main form with complete data</li>
+                <li><strong>2.</strong> Make sure to include the new "Ordering Provider NPI" field</li>
+                <li><strong>3.</strong> Use proper diagnosis codes in CWE format (code^description^I10)</li>
+                <li><strong>4.</strong> Export HL7 and verify all segments have proper formatting</li>
+                <li><strong>5.</strong> Check that field positions match Aegis specifications</li>
+            </ol>
+        </div>
+
+        <div class="mt-6 text-center">
+            <a href="/" class="bg-blue-600 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors mr-4">
+                Test in Main Application
+            </a>
+            <a href="/test_validation.html" class="bg-green-600 text-white px-6 py-3 rounded-lg hover:bg-green-700 transition-colors">
+                View Validation Tests
+            </a>
+        </div>
+    </div>
+</body>
+</html>
