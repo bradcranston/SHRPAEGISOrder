@@ -524,15 +524,14 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
   // Format date only (YYYYMMDD) for DOB and other date-only fields
   function formatHL7DateOnly(dt) {
     if (!dt) return "";
-    let d = new Date(dt);
-    if (isNaN(d.getTime())) {
-      // Try to parse as "YYYY-MM-DD" format
-      const m = /^([0-9]{4})-([0-9]{2})-([0-9]{2})/.exec(dt);
-      if (m) {
-        return m[1] + m[2] + m[3];
-      }
-      return "";
+    // Always prefer manual parsing for YYYY-MM-DD to avoid timezone issues
+    const m = /^([0-9]{4})-([0-9]{2})-([0-9]{2})/.exec(dt);
+    if (m) {
+      return m[1] + m[2] + m[3];
     }
+    // Fallback: try Date object for other formats
+    let d = new Date(dt);
+    if (isNaN(d.getTime())) return "";
     const pad = (n) => n.toString().padStart(2, "0");
     return (
       d.getFullYear().toString() + pad(d.getMonth() + 1) + pad(d.getDate())
