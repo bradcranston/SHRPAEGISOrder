@@ -671,6 +671,11 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
     const input = diagnosisInput.trim();
     if (!input) return "";
 
+    // Special case: if input is just "I10", return "Opioid Dependence^^I10"
+    if (input === "I10") {
+      return "Opioid Dependence^^I10";
+    }
+
     // If already in CWE format (contains carets), validate and escape
     if (input.includes("^")) {
       const parts = input.split("^");
@@ -1020,7 +1025,7 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
   const dg1 = [
     "DG1",
     "1", // 1: Set ID
-    dg1Code.split("^")[0] || "", // 2: Diagnosis Code (code component)
+    "", // 2: Diagnosis Coding Method (empty)
     dg1Code, // 3: Diagnosis Code (CWE format: code^description^coding_system)
   ].join("|");
   // ORC (Common Order) segment: order control and order number
