@@ -102,7 +102,7 @@
         <template id="obrTemplate">
           <div class="bg-white rounded shadow p-6 mt-6 obr-section">
             <h2 class="text-lg font-semibold mb-4">Order Request
-              <span class="text-red-500 ml-2 cursor-pointer font-normal text-sm" onclick="this.closest('.obr-section').remove()">Remove</span>
+              <span class="text-red-500 ml-2 cursor-pointer font-normal text-sm remove-obr-btn">Remove</span>
             </h2>
             <label class="block mb-2">Order Code <span class="text-red-500">*</span>
               <input name="OrderCode" class="order-code-input mt-1 block w-full border border-gray-300 rounded px-3 py-2" placeholder="Type to search..." autocomplete="off" />
@@ -118,7 +118,7 @@
         <template id="obxTemplate">
           <div class="bg-gray-100 rounded p-4 mt-4 obx-section">
             <h3 class="text-md font-semibold mb-2">Observation
-              <span class="text-red-500 ml-2 cursor-pointer font-normal text-sm" onclick="this.closest('.obx-section').remove()">Remove</span>
+              <span class="text-red-500 ml-2 cursor-pointer font-normal text-sm remove-obx-btn">Remove</span>
             </h3>
             <label class="block mb-2">Observation Question <span class="text-red-500">*</span>
               <input name="Question" class="mt-1 block w-full border border-gray-300 rounded px-3 py-2" />
@@ -170,6 +170,14 @@
         // Hide Add OBX button initially
         addObxBtn.style.display = 'none';
 
+        // Add remove functionality to the OBR section
+        const removeObrBtn = clone.querySelector('.remove-obr-btn');
+        if (removeObrBtn) {
+          removeObrBtn.onclick = function() {
+            this.closest('.obr-section').remove();
+          };
+        }
+
         function updateAddObxBtn() {
           addObxBtn.style.display = (currentOrderCode && obxCount < aoeForOrder.length) ? '' : 'none';
         }
@@ -190,6 +198,22 @@
         });
         orderCodeInput.addEventListener('focus', renderDropdown);
         orderCodeInput.addEventListener('blur', () => setTimeout(() => dropdown.classList.add('hidden'), 200));
+        
+        // Listen for custom orderSelected event (used for auto-loading)
+        orderCodeInput.addEventListener('orderSelected', function(event) {
+          const { orderCode: selectedOrderCode, orderDesc } = event.detail;
+          currentOrderCode = selectedOrderCode;
+          // Find all AOE questions for this orderCode
+          aoeForOrder = aoeQuestions.filter(q => q.orderCode === currentOrderCode);
+          // Remove all OBX
+          obrSection.querySelector('.obxContainer').innerHTML = '';
+          obxCount = 0;
+          // Auto-add required OBX for this orderCode
+          aoeForOrder.filter(q => q.required === 'R').forEach(aoeObj => {
+            addOBXForAoe(aoeObj);
+          });
+          updateAddObxBtn();
+        });
         function renderDropdown() {
           dropdown.innerHTML = '';
           if (!filteredCodes.length) {
@@ -287,6 +311,23 @@
             answerInput.className = 'mt-1 block w-full border border-gray-300 rounded px-3 py-2';
             answerLabel.appendChild(answerInput);
           }
+          // Add remove button
+          const removeBtn = document.createElement('span');
+          removeBtn.className = 'text-red-500 ml-2 cursor-pointer font-normal text-sm remove-obx-btn';
+          removeBtn.textContent = 'Remove';
+          removeBtn.onclick = function() {
+            this.closest('.obx-section').remove();
+            obxCount--;
+            updateAddObxBtn();
+          };
+
+          // Create header for the observation
+          const obxHeader = document.createElement('h3');
+          obxHeader.className = 'text-md font-semibold mb-2';
+          obxHeader.textContent = 'Observation ';
+          obxHeader.appendChild(removeBtn);
+
+          obxSection.appendChild(obxHeader);
           obxSection.appendChild(questionLabel);
           obxSection.appendChild(answerLabel);
           obxContainer.appendChild(obxSection);
@@ -308,8 +349,23 @@
       }
       window.addOBR = addOBR;
 
-      // Remove old addOBX
-      window.addOBX = function() {};
+      // Generic addOBX function for manual observation entry
+      window.addOBX = function(button) {
+        const obrSection = button.closest('.obr-section');
+        const obxContainer = obrSection.querySelector('.obxContainer');
+        const obxTemplate = document.getElementById('obxTemplate');
+        const obxClone = obxTemplate.content.cloneNode(true);
+        
+        // Add remove functionality to the cloned OBX section
+        const removeSpan = obxClone.querySelector('.obx-section .text-red-500');
+        if (removeSpan) {
+          removeSpan.onclick = function() {
+            this.closest('.obx-section').remove();
+          };
+        }
+        
+        obxContainer.appendChild(obxClone);
+      };
 
       function toggleSectionEdit(sectionId) {
         const section = document.getElementById(sectionId);
@@ -536,6 +592,49 @@
         });
         toggleSectionEdit(sectionId);
       }
+
+      // Auto-load default orders when page loads
+      window.addEventListener('load', function() {
+        const defaultOrderCodes = ['00801', '04440', '04440', '04160', '04200', '04201', '04140', '04110', '01365U', '01441', '04466', '30000U'];
+        
+        // Wait a bit to ensure orderCodes are loaded
+        setTimeout(() => {
+          defaultOrderCodes.forEach(orderCode => {
+            addOBR();
+            
+            // Find the most recently added OBR section
+            const obrSections = document.querySelectorAll('.obr-section');
+            const latestObrSection = obrSections[obrSections.length - 1];
+            
+            if (latestObrSection) {
+              const orderCodeInput = latestObrSection.querySelector('.order-code-input');
+              const orderDescInput = latestObrSection.querySelector('.order-desc-input');
+              const dropdown = latestObrSection.querySelector('.order-code-dropdown');
+              
+              if (orderCodeInput) {
+                // Find matching order in orderCodes
+                const matchingOrder = orderCodes.find(o => o.orderCode === orderCode);
+                if (matchingOrder) {
+                  // Simulate the exact same logic as the dropdown item click
+                  orderCodeInput.value = matchingOrder.orderCode;
+                  orderDescInput.value = matchingOrder.orderDesc;
+                  dropdown.classList.add('hidden');
+                  
+                  // We need to trigger the internal logic of the addOBR function
+                  // Since we can't access the closure variables directly, we'll dispatch a custom event
+                  const selectEvent = new CustomEvent('orderSelected', {
+                    detail: {
+                      orderCode: matchingOrder.orderCode,
+                      orderDesc: matchingOrder.orderDesc
+                    }
+                  });
+                  orderCodeInput.dispatchEvent(selectEvent);
+                }
+              }
+            }
+          });
+        }, 500);
+      });
       </script>
     <script type="module">
       import "./src/index.js";

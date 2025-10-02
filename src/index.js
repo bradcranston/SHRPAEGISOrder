@@ -683,16 +683,16 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
         return esc(parts[0]) + "^" + esc(parts[1]) + "^" + esc(parts[2]);
       } else if (parts.length === 2) {
         // Has code^description, add default coding system
-        return esc(parts[0]) + "^" + esc(parts[1]) + "^I10";
+        return esc(parts[0]) + "^" + esc(parts[1]) + "";
       } else {
         // Only code with caret, treat as code only
-        return esc(parts[0]) + "^^I10";
+        return esc(parts[0]) + "";
       }
     }
 
     // If just a code (no carets), format with default coding system
     // For ICD-10 codes, use I10 as the coding system per HL7 Table 396
-    return esc(input) + "^^I10";
+    return esc(input) + "^^";
   }
 
   // Format provider name with NPI for OBR.16
@@ -760,68 +760,6 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
   const msh = `MSH|^~\\&|Aegis|${esc(msh4)}|FileMaker|FM|${esc(
     msh7
   )}||ORM^O01|${esc(msh10)}|P|2.3.1`;
-  /*
-  // SAMPLE JSON FOR ROUND-TRIP TESTING:
-  {
-    "MSH_4": "12345",
-    "MSH_7": "20240618123000",
-    "MSH_10": "ORD123456",
-    "PID_2": "P123456",
-    "PID_2_5": "MR",
-    "PID_5_family": "Doe",
-    "PID_5_given": "John",
-    "PID_5_middle": "M",
-    "PID_5_suffix": "",
-    "PID_5_prefix": "",
-    "PID_7": "1980-01-01",
-    "PID_8": "M",
-    "PID_10": "White",
-    "PID_11_address": "123 Main St",
-    "PID_11_address2": "Apt 4B",
-    "PID_11_city": "Nashville",
-    "PID_11_state": "TN",
-    "PID_11_zip": "37201",
-    "PID_13": "615-555-1234",
-    "PID_19": "123-45-6789",
-    "PID_22": "Not Hispanic or Latino",
-    "PV1_8": "Dr. Smith",
-    "OBR_16": "Allan Clark",
-    "OBR_16_NPI": "1354275899",
-    "OBR_7": "2024-06-18T14:30",
-    "OBR_15": "URINE",
-    "OBR_15_1": "URN",
-    "DG1_3": "Z79.899^Other long term (current) drug therapy^I10",
-    "IN1_47": "C",
-    "IN1_3": "INS123",
-    "IN1_4": "Best Insurance",
-    "IN1_5_address": "456 Insurance Ave",
-    "IN1_5_address2": "Suite 200",
-    "IN1_5_city": "Nashville",
-    "IN1_5_state": "TN",
-    "IN1_5_zip": "37202",
-    "IN1_16": "Jane Doe",
-    "IN1_17": "SPO",
-    "IN1_18": "1975-05-05",
-    "IN1_19_address": "789 Spouse Rd",
-    "IN1_19_address2": "",
-    "IN1_19_city": "Nashville",
-    "IN1_19_state": "TN",
-    "IN1_19_zip": "37203",
-    "IN1_36": "POL987654",
-    "IN1_43": "F",
-    "GT1_3": "Jane Doe",
-    "GT1_5_address": "789 Spouse Rd",
-    "GT1_5_address2": "",
-    "GT1_5_city": "Nashville",
-    "GT1_5_state": "TN",
-    "GT1_5_zip": "37203",
-    "GT1_6": "615-555-9876",
-    "OBR1_OrderCode": "30000B",
-    "OBR1_OrderDescription": "Drug-Drug Interaction (DDI) - Blood",
-    "OBR1_OBX1_Question": "1 - Prescribed Medication(s) to be tested (Blood)",
-    "OBR1_OBX1_Answer": "Brexpiprazole PRN"
-  }
-  */
   const pid = [
     "PID",
     "1", // 1: Set ID
@@ -923,6 +861,7 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
     esc(getVal("display-IN143")), // 43: Insured's Administrative Sex
     "", // 46: Verification Status
     "", // 46: Verification Status
+    "", // 46: Verification Status
     esc(getVal("display-IN147")), // 47: Billing Indicator
   ].join("|");
   // GT1 (Guarantor)
@@ -983,7 +922,7 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
       "", // 5: Priority
       "", // 6: Requested Date/Time
       esc(collectionDateTime), // 7: Observation Date/Time
-      "", // 8: Observation End Date/Time
+      new Date().toISOString().slice(0, 10).replace(/-/g, ""), // 8: Observation End Date/Time (current date YYYYMMDD)
       "", // 9: Collection Volume
       "", // 10: Collector Identifier
       "", // 11: Specimen Action Code
@@ -1119,122 +1058,6 @@ window.exportJSONForFileMaker = function exportJSONForFileMaker() {
 };
 
 /**
- * Test function to validate round-trip JSON import/export
- */
-window.testRoundTrip = function testRoundTrip() {
-  const sampleData = {
-    MSH_4: "12345",
-    MSH_7: "2024-06-18T12:30",
-    MSH_10: "ORD123456",
-    PID_2: "P123456",
-    PID_2_5: "MR",
-    PID_5_family: "Doe",
-    PID_5_given: "John",
-    PID_5_middle: "M",
-    PID_5_suffix: "",
-    PID_5_prefix: "",
-    PID_7: "1980-01-01",
-    PID_8: "M",
-    PID_10: "White",
-    PID_11_address: "123 Main St",
-    PID_11_address2: "Apt 4B",
-    PID_11_city: "Nashville",
-    PID_11_state: "TN",
-    PID_11_zip: "37201",
-    PID_13: "615-555-1234",
-    PID_19: "123-45-6789",
-    PID_22: "Not Hispanic or Latino",
-    PV1_8: "Dr. Smith",
-    OBR_16: "Allan Clark",
-    OBR_16_NPI: "1354275899",
-    OBR_7: "2024-06-18T14:30",
-    OBR_15: "URINE",
-    OBR_15_1: "URN",
-    DG1_3: "Z79.899^Other long term (current) drug therapy^I10",
-    IN1_47: "C",
-    IN1_3: "INS123",
-    IN1_4: "Best Insurance",
-    IN1_5_address: "456 Insurance Ave",
-    IN1_5_address2: "Suite 200",
-    IN1_5_city: "Nashville",
-    IN1_5_state: "TN",
-    IN1_5_zip: "37202",
-    IN1_16: "Jane Doe",
-    IN1_17: "SPO",
-    IN1_18: "1975-05-05",
-    IN1_19_address: "789 Spouse Rd",
-    IN1_19_address2: "",
-    IN1_19_city: "Nashville",
-    IN1_19_state: "TN",
-    IN1_19_zip: "37203",
-    IN1_36: "POL987654",
-    IN1_43: "F",
-    GT1_3: "Jane Doe",
-    GT1_5_address: "789 Spouse Rd",
-    GT1_5_address2: "",
-    GT1_5_city: "Nashville",
-    GT1_5_state: "TN",
-    GT1_5_zip: "37203",
-    GT1_6: "615-555-9876",
-    OBR1_OrderCode: "30000B",
-    OBR1_OrderDescription: "Drug-Drug Interaction (DDI) - Blood",
-    OBR1_OBX1_Question: "1 - Prescribed Medication(s) to be tested (Blood)",
-    OBR1_OBX1_Answer: "Brexpiprazole PRN",
-  };
-
-  console.log("Testing round-trip functionality...");
-
-  // Step 1: Clear the form
-  clearForm();
-
-  // Step 2: Import test data
-  populateFormFromJSON(sampleData);
-
-  // Step 3: Export and compare
-  setTimeout(() => {
-    const exportedData = exportJSONData();
-    console.log("Original data keys:", Object.keys(sampleData).length);
-    console.log("Exported data keys:", Object.keys(exportedData).length);
-
-    // Check for missing fields
-    const missingFields = [];
-    Object.keys(sampleData).forEach((key) => {
-      if (!exportedData[key] && sampleData[key] !== "") {
-        missingFields.push(key);
-      }
-    });
-
-    if (missingFields.length > 0) {
-      console.warn("Missing fields in export:", missingFields);
-    } else {
-      console.log("✓ All fields successfully imported and exported");
-    }
-
-    // Check for extra fields
-    const extraFields = [];
-    Object.keys(exportedData).forEach((key) => {
-      if (
-        !Object.prototype.hasOwnProperty.call(sampleData, key) &&
-        exportedData[key] !== ""
-      ) {
-        extraFields.push(key);
-      }
-    });
-
-    if (extraFields.length > 0) {
-      console.log("Extra fields in export:", extraFields);
-    }
-
-    return {
-      original: sampleData,
-      exported: exportedData,
-      missing: missingFields,
-      extra: extraFields,
-    };
-  }, 1000);
-};
-
-/**
  * Calls FileMaker script to cancel the lab order
  */
 window.cancelLabOrder = function cancelLabOrder() {
@@ -1250,7 +1073,6 @@ window.cancelLabOrder = function cancelLabOrder() {
         window.FileMaker.PerformScript("CancelLabOrder");
         console.log('FileMaker script "CancelLabOrder" executed successfully');
       } else {
-        // For testing/development when not in FileMaker
         console.log('FileMaker script "CancelLabOrder" would be called here');
         alert("Cancel order request sent to FileMaker");
       }
@@ -1288,52 +1110,6 @@ window.clearForm = function clearForm() {
   }
 
   console.log("Form cleared");
-};
-
-/**
- * Export JSON data without calling FileMaker (for testing)
- */
-window.exportJSONData = function exportJSONData() {
-  const data = {};
-
-  // Collect all display fields using the sectionFields definition
-  Object.values(sectionFields).forEach((section) => {
-    section.forEach((field) => {
-      const displayId =
-        "display-" + field.name.replace(/\./g, "").replace(/_/g, "");
-      const span = document.getElementById(displayId);
-      if (span) {
-        // Field name is already in the correct underscore format
-        data[field.name] = span.textContent.trim();
-      }
-    });
-  });
-
-  // Add OBR/OBX dynamic data
-  let obrSections = document.querySelectorAll(".obr-section");
-  obrSections.forEach((obrSection, i) => {
-    const obrIdx = i + 1;
-    const orderCode = obrSection.querySelector('input[name="OrderCode"]').value;
-    const orderDesc = obrSection.querySelector(
-      'input[name="OrderDescription"]'
-    ).value;
-    data[`OBR${obrIdx}_OrderCode`] = orderCode;
-    data[`OBR${obrIdx}_OrderDescription`] = orderDesc;
-
-    // OBX (AOE) for this OBR
-    const obxSections = obrSection.querySelectorAll(".obx-section");
-    obxSections.forEach((obxSection, j) => {
-      const obxIdx = j + 1;
-      let qInput = obxSection.querySelector('input[name="Question"]');
-      let aInput = obxSection.querySelector('input[name="Answer"]');
-      let question = qInput ? qInput.value : "";
-      let answer = aInput ? aInput.value : "";
-      data[`OBR${obrIdx}_OBX${obxIdx}_Question`] = question;
-      data[`OBR${obrIdx}_OBX${obxIdx}_Answer`] = answer;
-    });
-  });
-
-  return data;
 };
 
 // Export functions to window for global access
