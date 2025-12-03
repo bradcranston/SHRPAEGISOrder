@@ -670,9 +670,9 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
     const input = diagnosisInput.trim();
     if (!input) return "";
 
-    // Special case: if input is just "I10", return "Opioid Dependence^^I10"
+    // Special case: if input is just "I10", return proper ICD-10 code for Opioid Dependence
     if (input === "I10") {
-      return "Opioid Dependence^^I10";
+      return "F11.20^Opioid Dependence^I10";
     }
 
     // If already in CWE format (contains carets), validate and escape
