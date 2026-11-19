@@ -220,18 +220,8 @@
       "codingSystem": ""
     },
     {
-      "orderCode": "00801",
-      "orderDesc": "SUD Profile",
-      "profile": "Y",
-      "performingDept": "Toxicology",
-      "specimen": "Urine",
-      "orderLoincCode": "",
-      "orderLoincDesc": "",
-      "codingSystem": ""
-    },
-    {
-      "orderCode": "00802",
-      "orderDesc": "Mental Health Profile",
+      "orderCode": "00899",
+      "orderDesc": "SUD/Mental health",
       "profile": "Y",
       "performingDept": "Toxicology",
       "specimen": "Urine",

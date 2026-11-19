@@ -168,14 +168,14 @@ function toggleSectionEdit(sectionId) {
   const modalTitle = document.getElementById("modalTitle");
   const modalContent = document.getElementById("modalContent");
   modalTitle.textContent = document.querySelector(
-    `#${sectionId} h2`
+    `#${sectionId} h2`,
   ).textContent;
   modalContent.innerHTML = "";
   const fields = sectionFields[sectionId];
   fields.forEach((field) => {
     let value =
       document.getElementById(
-        "display-" + field.name.replace(/\./g, "").replace(/_/g, "")
+        "display-" + field.name.replace(/\./g, "").replace(/_/g, ""),
       ).textContent || "";
     if (field.type === "select") {
       let select = document.createElement("select");
@@ -230,7 +230,7 @@ function saveSection(sectionId) {
   fields.forEach((field) => {
     let input = modalContent.querySelector(`[name='${field.name}']`);
     let displaySpan = document.getElementById(
-      "display-" + field.name.replace(/\./g, "").replace(/_/g, "")
+      "display-" + field.name.replace(/\./g, "").replace(/_/g, ""),
     );
     if (displaySpan) displaySpan.textContent = input.value;
   });
@@ -266,12 +266,8 @@ function populateFormFromJSON(json) {
     const fullName = data.PID_5.trim();
     const nameParts = fullName.split(/\s+/);
     if (nameParts.length >= 2) {
-      data.PID_5_family = nameParts[nameParts.length - 1]; // Last word as last name
-      data.PID_5_given = nameParts[0]; // First word as first name
-      if (nameParts.length > 2) {
-        // Everything in between as middle name
-        data.PID_5_middle = nameParts.slice(1, -1).join(" ");
-      }
+      data.PID_5_family = nameParts[nameParts.length - 1];
+      data.PID_5_given = nameParts[0];
     } else if (nameParts.length === 1) {
       data.PID_5_family = fullName;
     }
@@ -289,12 +285,8 @@ function populateFormFromJSON(json) {
     const fullName = data.IN1_16.trim();
     const nameParts = fullName.split(/\s+/);
     if (nameParts.length >= 2) {
-      data.IN1_16_family = nameParts[nameParts.length - 1]; // Last word as last name
-      data.IN1_16_given = nameParts[0]; // First word as first name
-      if (nameParts.length > 2) {
-        // Everything in between as middle name
-        data.IN1_16_middle = nameParts.slice(1, -1).join(" ");
-      }
+      data.IN1_16_family = nameParts[nameParts.length - 1];
+      data.IN1_16_given = nameParts[0];
     } else if (nameParts.length === 1) {
       data.IN1_16_family = fullName;
     }
@@ -339,7 +331,7 @@ function populateFormFromJSON(json) {
 
   // Populate modal inputs (if open or for next open)
   const allModalInputs = document.querySelectorAll(
-    "#editModal input, #editModal select"
+    "#editModal input, #editModal select",
   );
   allModalInputs.forEach((input) => {
     const value = findValueForField(data, input.name);
@@ -348,16 +340,21 @@ function populateFormFromJSON(json) {
     }
   });
   // --- OBR/OBX dynamic population ---
-  const obrContainer = document.getElementById("obrContainer");
-  if (obrContainer) obrContainer.innerHTML = "";
   // Find all OBR indices
   const obrIndices = Array.from(
     new Set(
       Object.keys(data)
         .filter((k) => /^OBR\d+_OrderCode$/.test(k))
-        .map((k) => k.match(/^OBR(\d+)_OrderCode$/)[1])
-    )
+        .map((k) => k.match(/^OBR(\d+)_OrderCode$/)[1]),
+    ),
   );
+  // Only replace the orders when the JSON carries saved orders; otherwise keep
+  // the default order set that index.html auto-loads.
+  if (obrIndices.length > 0) {
+    window.ordersRestoredFromJSON = true;
+    const obrContainer = document.getElementById("obrContainer");
+    if (obrContainer) obrContainer.innerHTML = "";
+  }
   obrIndices.forEach((idx) => {
     if (typeof window.addOBR === "function") window.addOBR();
     const obrSections = document.querySelectorAll(".obr-section");
@@ -365,7 +362,7 @@ function populateFormFromJSON(json) {
     if (!obrSection) return;
     const orderCodeInput = obrSection.querySelector('input[name="OrderCode"]');
     const orderDescInput = obrSection.querySelector(
-      'input[name="OrderDescription"]'
+      'input[name="OrderDescription"]',
     );
     if (orderCodeInput) {
       orderCodeInput.value = data[`OBR${idx}_OrderCode`] || "";
@@ -388,7 +385,7 @@ function populateFormFromJSON(json) {
       .filter(
         (k) =>
           k.startsWith(`OBR${idx}_OBX`) &&
-          k.match(new RegExp(`^OBR${idx}_OBX(\\d+)_Question$`))
+          k.match(new RegExp(`^OBR${idx}_OBX(\\d+)_Question$`)),
       )
       .map((k) => k.match(new RegExp(`^OBR${idx}_OBX(\\d+)_Question$`))[1])
       .sort((a, b) => Number(a) - Number(b));
@@ -414,7 +411,7 @@ function populateFormFromJSON(json) {
       let aoeObj = null;
       if (window.aoeQuestions && orderCode && aoeQuestion) {
         aoeObj = window.aoeQuestions.find(
-          (q) => q.orderCode === orderCode && q.aoeQuestion === aoeQuestion
+          (q) => q.orderCode === orderCode && q.aoeQuestion === aoeQuestion,
         );
       }
       if (aoeObj && obrSection.addOBXForAoe) {
@@ -489,7 +486,10 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
       .replace(/\|/g, "\\F\\")
       .replace(/\^/g, "\\S\\")
       .replace(/~/g, "\\R\\")
-      .replace(/&/g, "\\T\\");
+      .replace(/&/g, "\\T\\")
+      // Strip line breaks so they can't split HL7 segments (segments are
+      // joined with \r), collapsing any run of them to a single space
+      .replace(/\r\n|\r|\n/g, " ");
   }
   // Get display value by id
   function getVal(id) {
@@ -584,10 +584,8 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
       const parts = name.split(",").map((p) => p.trim());
       if (parts.length >= 2) {
         const lastName = parts[0];
-        const firstMiddle = parts[1].split(/\s+/);
-        const firstName = firstMiddle[0] || "";
-        const middleName = firstMiddle.slice(1).join(" ") || "";
-        return formatXPN(lastName, firstName, middleName);
+        const firstName = parts[1].split(/\s+/)[0] || "";
+        return formatXPN(lastName, firstName);
       }
     }
 
@@ -601,8 +599,7 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
     let prefix = "",
       suffix = "",
       firstName = "",
-      lastName = "",
-      middleName = "";
+      lastName = "";
 
     // Check for common prefixes
     const prefixes = [
@@ -640,24 +637,22 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
     if (
       nameParts.length > 1 &&
       suffixes.some(
-        (s) => nameParts[nameParts.length - 1].toLowerCase() === s.toLowerCase()
+        (s) =>
+          nameParts[nameParts.length - 1].toLowerCase() === s.toLowerCase(),
       )
     ) {
       suffix = nameParts.pop();
     }
 
-    // Remaining parts: assume first name, middle names, last name
+    // Remaining parts: first name and last name only
     if (nameParts.length >= 2) {
       firstName = nameParts[0];
       lastName = nameParts[nameParts.length - 1];
-      if (nameParts.length > 2) {
-        middleName = nameParts.slice(1, -1).join(" ");
-      }
     } else if (nameParts.length === 1) {
       lastName = nameParts[0];
     }
 
-    return formatXPN(lastName, firstName, middleName, suffix, prefix);
+    return formatXPN(lastName, firstName, "", suffix, prefix);
   }
 
   // Format diagnosis code in CWE format for DG1.3
@@ -758,7 +753,7 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
   const msh7 = formatHL7Date(msh7raw);
   const msh10 = getVal("display-MSH10") || "1"; // Default to '1' if empty
   const msh = `MSH|^~\\&|Aegis|${esc(msh4)}|FileMaker|FM|${esc(
-    msh7
+    msh7,
   )}||ORM^O01|${esc(msh10)}|P|2.3.1`;
   const pid = [
     "PID",
@@ -809,7 +804,7 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
       esc(getVal("display-IN15state")) +
       "^" +
       esc(getVal("display-IN15zip")), // 5: Insurance Company Address
-    "", // 6: Phone
+    "", // 6: Insurance Co Contact Person
     "", // 7: Group Number
     "", // 8: Group Name
     "", // 9: Insured's Group Emp ID
@@ -822,7 +817,7 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
     formatXPN(
       getVal("display-IN116family"),
       getVal("display-IN116given"),
-      getVal("display-IN116middle")
+      getVal("display-IN116middle"),
     ), // 16: Insured's Name (XPN format)
     esc(getVal("display-IN117")), // 17: Insured's Relationship to Patient
     formatHL7DateOnly(getVal("display-IN118")), // 18: Insured's Date of Birth (formatted as YYYYMMDD)
@@ -888,7 +883,7 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
   obrSections.forEach((obrSection, i) => {
     const orderCode = obrSection.querySelector('input[name="OrderCode"]').value;
     const orderDesc = obrSection.querySelector(
-      'input[name="OrderDescription"]'
+      'input[name="OrderDescription"]',
     ).value;
     const collectionDateTime = formatHL7Date(getVal("display-OBR7"));
     const specimenSource = getVal("display-OBR15");
@@ -905,7 +900,7 @@ window.exportHL7ForFileMaker = function exportHL7ForFileMaker() {
         const last = esc(parts[parts.length - 1] || "");
         const first = esc(parts[0] || "");
         const middle = esc(
-          parts.length > 2 ? parts.slice(1, -1).join(" ") : ""
+          parts.length > 2 ? parts.slice(1, -1).join(" ") : "",
         );
         return `${npi}^${last}^${first}^${middle}^^^^^NPI`;
       }
@@ -1030,7 +1025,7 @@ window.exportJSONForFileMaker = function exportJSONForFileMaker() {
     const obrIdx = i + 1;
     const orderCode = obrSection.querySelector('input[name="OrderCode"]').value;
     const orderDesc = obrSection.querySelector(
-      'input[name="OrderDescription"]'
+      'input[name="OrderDescription"]',
     ).value;
     data[`OBR${obrIdx}_OrderCode`] = orderCode;
     data[`OBR${obrIdx}_OrderDescription`] = orderDesc;
@@ -1064,7 +1059,7 @@ window.cancelLabOrder = function cancelLabOrder() {
   // Confirm the cancellation with the user
   if (
     confirm(
-      "Are you sure you want to cancel this lab order? This action cannot be undone."
+      "Are you sure you want to cancel this lab order? This action cannot be undone.",
     )
   ) {
     try {
@@ -1097,7 +1092,7 @@ window.clearForm = function clearForm() {
 
   // Clear modal inputs
   const allModalInputs = document.querySelectorAll(
-    "#editModal input, #editModal select"
+    "#editModal input, #editModal select",
   );
   allModalInputs.forEach((input) => {
     input.value = "";
@@ -1115,6 +1110,7 @@ window.clearForm = function clearForm() {
 // Export functions to window for global access
 window.toggleSectionEdit = toggleSectionEdit;
 window.populateFormFromJSON = populateFormFromJSON;
+window.hideValidationErrors = hideValidationErrors;
 
 // Make aoeQuestions available globally for HL7 export
 import aoeQuestions from "./aoequestions.json";
@@ -1314,11 +1310,11 @@ window.verifyFieldMapping = function verifyFieldMapping() {
   if (results.missing.length > 0) {
     console.log(
       "Missing from JavaScript:",
-      results.jsMissing.map((f) => f.field)
+      results.jsMissing.map((f) => f.field),
     );
     console.log(
       "Missing from HTML:",
-      results.htmlMissing.map((f) => f.field)
+      results.htmlMissing.map((f) => f.field),
     );
   }
 
@@ -1386,7 +1382,7 @@ function validateForm() {
   obrSections.forEach((obrSection, index) => {
     const orderCodeInput = obrSection.querySelector('input[name="OrderCode"]');
     const orderDescInput = obrSection.querySelector(
-      'input[name="OrderDescription"]'
+      'input[name="OrderDescription"]',
     );
 
     if (!orderCodeInput || !orderCodeInput.value.trim()) {
@@ -1395,7 +1391,7 @@ function validateForm() {
 
     if (!orderDescInput || !orderDescInput.value.trim()) {
       errors.push(
-        `Order Description is required for Order Request ${index + 1}`
+        `Order Description is required for Order Request ${index + 1}`,
       );
     }
 
@@ -1409,7 +1405,7 @@ function validateForm() {
         errors.push(
           `Observation Question is required for Observation ${
             obxIndex + 1
-          } in Order Request ${index + 1}`
+          } in Order Request ${index + 1}`,
         );
       }
 
@@ -1417,7 +1413,7 @@ function validateForm() {
         errors.push(
           `Observation Answer is required for Observation ${
             obxIndex + 1
-          } in Order Request ${index + 1}`
+          } in Order Request ${index + 1}`,
         );
       }
     });
@@ -1445,7 +1441,7 @@ function showValidationErrors(errors) {
     highlightEmptyRequiredFields();
 
     // Scroll to error message
-    errorDiv.scrollIntoView({ behavior: "smooth", block: "center" });
+    errorDiv.scrollIntoView({ behavior: "instant", block: "center" });
   } else {
     errorDiv.classList.add("hidden");
   }
@@ -1479,7 +1475,7 @@ function handleFormSubmit(event) {
   }
 
   console.log(
-    "Validation passed, proceeding with FileMaker script execution..."
+    "Validation passed, proceeding with FileMaker script execution...",
   );
   hideValidationErrors();
 

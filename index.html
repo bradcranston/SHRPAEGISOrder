@@ -97,7 +97,10 @@
           </div>
         </div>
         <div id="obrContainer"></div>
-        <button type="button" onclick="addOBR()" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Add Order Request</button>
+        <div class="flex gap-2">
+          <button type="button" onclick="addOBR()" class="bg-blue-600 text-white px-3 py-1 rounded hover:bg-blue-700">Add Order Request</button>
+          <button type="button" id="addDefaultOrderSetBtn" onclick="loadDefaultOrders()" style="display:inline-block" class="bg-green-600 text-white px-3 py-1 rounded hover:bg-green-700">Add Default Order Set</button>
+        </div>
         <!-- OBR/OBX dynamic sections -->
         <template id="obrTemplate">
           <div class="bg-white rounded shadow p-6 mt-6 obr-section">
@@ -168,7 +171,7 @@
         let obxCount = 0;
 
         // Hide Add OBX button initially
-        addObxBtn.style.display = 'none';
+        if (addObxBtn) addObxBtn.style.display = 'none';
 
         // Add remove functionality to the OBR section
         const removeObrBtn = clone.querySelector('.remove-obr-btn');
@@ -179,7 +182,7 @@
         }
 
         function updateAddObxBtn() {
-          addObxBtn.style.display = (currentOrderCode && obxCount < aoeForOrder.length) ? '' : 'none';
+          if (addObxBtn) addObxBtn.style.display = (currentOrderCode && obxCount < aoeForOrder.length) ? '' : 'none';
         }
 
         orderCodeInput.addEventListener('input', function() {
@@ -189,7 +192,7 @@
             o.orderDesc.toLowerCase().includes(val)
           );
           renderDropdown();
-          addObxBtn.style.display = 'none';
+          if (addObxBtn) addObxBtn.style.display = 'none';
           orderDescInput.value = '';
           currentOrderCode = '';
           obrSection.querySelector('.obxContainer').innerHTML = '';
@@ -593,48 +596,44 @@
         toggleSectionEdit(sectionId);
       }
 
+      const defaultOrderCodes = ['00899', '04440', '04120', '04160', '04200', '04201', '04140', '04110', '01365U', '01441', '04466', '01929U'];
+
+      function addMissingDefaultOrders() {
+        const presentCodes = Array.from(document.querySelectorAll('.order-code-input')).map(i => i.value.trim());
+        const missingCodes = defaultOrderCodes.filter(code => !presentCodes.includes(code));
+        missingCodes.forEach(orderCode => {
+          addOBR();
+          const obrSections = document.querySelectorAll('.obr-section');
+          const latestObrSection = obrSections[obrSections.length - 1];
+          if (!latestObrSection) return;
+          const orderCodeInput = latestObrSection.querySelector('.order-code-input');
+          const orderDescInput = latestObrSection.querySelector('.order-desc-input');
+          const dropdown = latestObrSection.querySelector('.order-code-dropdown');
+          if (!orderCodeInput) return;
+          const matchingOrder = orderCodes.find(o => o.orderCode === orderCode);
+          if (!matchingOrder) return;
+          orderCodeInput.value = matchingOrder.orderCode;
+          orderDescInput.value = matchingOrder.orderDesc;
+          if (dropdown) dropdown.classList.add('hidden');
+          orderCodeInput.dispatchEvent(new CustomEvent('orderSelected', {
+            detail: { orderCode: matchingOrder.orderCode, orderDesc: matchingOrder.orderDesc }
+          }));
+        });
+      }
+
       // Auto-load default orders when page loads
-      window.addEventListener('load', function() {
-        const defaultOrderCodes = ['00801', '04440', '04120', '04160', '04200', '04201', '04140', '04110', '01365U', '01441', '04466', '00802'];
-        
-        // Wait a bit to ensure orderCodes are loaded
+      function loadDefaultOrders(isAutoLoad) {
         setTimeout(() => {
-          defaultOrderCodes.forEach(orderCode => {
-            addOBR();
-            
-            // Find the most recently added OBR section
-            const obrSections = document.querySelectorAll('.obr-section');
-            const latestObrSection = obrSections[obrSections.length - 1];
-            
-            if (latestObrSection) {
-              const orderCodeInput = latestObrSection.querySelector('.order-code-input');
-              const orderDescInput = latestObrSection.querySelector('.order-desc-input');
-              const dropdown = latestObrSection.querySelector('.order-code-dropdown');
-              
-              if (orderCodeInput) {
-                // Find matching order in orderCodes
-                const matchingOrder = orderCodes.find(o => o.orderCode === orderCode);
-                if (matchingOrder) {
-                  // Simulate the exact same logic as the dropdown item click
-                  orderCodeInput.value = matchingOrder.orderCode;
-                  orderDescInput.value = matchingOrder.orderDesc;
-                  dropdown.classList.add('hidden');
-                  
-                  // We need to trigger the internal logic of the addOBR function
-                  // Since we can't access the closure variables directly, we'll dispatch a custom event
-                  const selectEvent = new CustomEvent('orderSelected', {
-                    detail: {
-                      orderCode: matchingOrder.orderCode,
-                      orderDesc: matchingOrder.orderDesc
-                    }
-                  });
-                  orderCodeInput.dispatchEvent(selectEvent);
-                }
-              }
-            }
-          });
+          // Don't auto-add defaults on top of saved orders restored from FileMaker
+          if (!(isAutoLoad && window.ordersRestoredFromJSON)) addMissingDefaultOrders();
+          // Clear any stale validation error left from a prior failed submit
+          if (typeof window.hideValidationErrors === 'function') {
+            window.hideValidationErrors();
+          }
         }, 500);
-      });
+      }
+      window.loadDefaultOrders = loadDefaultOrders;
+      loadDefaultOrders(true);
       </script>
     <script type="module">
       import "./src/index.js";
